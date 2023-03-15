@@ -3,6 +3,8 @@
 - GCP have 20+ zones around the world
 - Each zone have al least 3 zones connected with low-l tency links.
 - Each zone has one or more discrete clusters.
+- Region and zone utilization is based on latency, HW requirements, availability, regulations and cost.
+- Instances runs in a Region, but images and templates (unless uses zonal machines) are global. 
 
 ## Virtual Machines 
 - Google Compute Engine is a SERVICE to manage and create lifecycle of VM.
@@ -11,6 +13,11 @@
 - You can share an image across projects.
 - **Hardening** an image is the proccess of creating an image from a vm-instance that meets the security requirements of an enterprise.
 - It is preferred to use a custom image rather than startup scripts.
+- For vCPUs/ memory changes, a VM instance has to be stopped.
+- A good practice is use labels to organize VMs.
+  - Default metrics: CPU, Network and Disk Throughput.
+  - Cloud agent: Memory Utilization and Disk space.
+
 
 ## Cost 
 - In GCP you are billed per second.
