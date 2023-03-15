@@ -15,6 +15,7 @@
 - It is preferred to use a custom image rather than startup scripts.
 - For vCPUs/ memory changes, a VM instance has to be stopped.
 - A good practice is use labels to organize VMs.
+- Managment:
   - Default metrics: CPU, Network and Disk Throughput.
   - Cloud agent: Memory Utilization and Disk space.
 
@@ -43,4 +44,11 @@
 - Adding GPU imply that VM won't support Live migration.
 - GPU carry higher cost, but is useful for High performance, math and graphics intensive.
 
-
+##  GCloud CLI 
+- Gcloud is part of Google Cloud SDK (requires Python) you can install it on your computer.
+- Cloud Shell is a online shell, it has installed Gcloud.
+- Some GCP services have CLI tools such as BigQuery (bq), Cloud BigTable (cbt), Cloud Storage (gsutil) and Kubernetes (kubectl).
+- Some useful commands: 
+  - ``` gcloud --version ```
+  - ``` gcloud init ```
+  - ``` gcloud config list ```
