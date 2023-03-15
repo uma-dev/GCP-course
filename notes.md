@@ -28,5 +28,12 @@
 ## Live migration 
 - Whenever you need a system update (HW or SW) you can use Live migration. This means that your running instance is migrated to another host on the same zone. Also, this proccess doesn't change any attributes or properties of the VM.
 - Preemptible instances doesn't support this feature.
-- The way to configure the  live migration is through Availability Policy.
+- The way to configure the Live Ligration is through Availability Policy section.
+
+## GPU
+- You can customize your VM with a GPU or use the predifined family of VM with GPU.
+- You can add GPU to your machine but you have to use images with GPU libraries and supported machine types (shared core and memory-optimized machines does not support this feature).
+- Adding GPU imply that VM won't support Live migration.
+- GPU carry higher cost, but is useful for High performance, math and graphics intensive.
+
 
