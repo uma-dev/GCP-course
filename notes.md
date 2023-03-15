@@ -25,3 +25,8 @@
 - Solutions to those problems are: Remove any static ip address that is not used and create budget alerts.
 - A budget can send you email alerts about the limits of your budget.
 
+## Live migration 
+- Whenever you need a system update (HW or SW) you can use Live migration. This means that your running instance is migrated to another host on the same zone. Also, this proccess doesn't change any attributes or properties of the VM.
+- Preemptible instances doesn't support this feature.
+- The way to configure the  live migration is through Availability Policy.
+
