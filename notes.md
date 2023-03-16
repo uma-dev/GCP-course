@@ -52,3 +52,11 @@
   - ``` gcloud --version ```
   - ``` gcloud init ```
   - ``` gcloud config list ```
+  - ``` gcloud config list account ```
+  - ``` gcloud config list compute/zone```
+  - ``` gcloud config configurations list ```
+  - ``` gcloud config configurations active NAME ```
+  - ``` gcloud config configurations create NAME ```
+
+- The general structure of a command is as follows:
+  - ```gcloud GROUP SUBGROUP ACTION ```
