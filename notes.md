@@ -48,7 +48,12 @@
 - Gcloud is part of Google Cloud SDK (requires Python) you can install it on your computer.
 - Cloud Shell is a online shell, it has installed Gcloud.
 - Some GCP services have CLI tools such as BigQuery (bq), Cloud BigTable (cbt), Cloud Storage (gsutil) and Kubernetes (kubectl).
-- Some useful commands: 
+
+The general structure of a command is as follows:
+  - ```gcloud GROUP SUBGROUP ACTION ```
+
+
+Some useful commands: 
   - ``` gcloud --version ```
   - ``` gcloud init ```
   - ``` gcloud config list ```
@@ -64,7 +69,7 @@
   - ``` gcloud compute instances delete NAME ```
   - ``` glcoud compute instances create NAME ```
   - ``` gcloud compute instances describe NAME ```
+  - ``` gcloud compute machine-types list ```
+  - ``` gcloud compute machine-types list --filter "zone:NAME"``` 
 
-- The general structure of a command is as follows:
-  - ```gcloud GROUP SUBGROUP ACTION ```
 
