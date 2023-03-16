@@ -71,5 +71,6 @@ Some useful commands:
   - ``` gcloud compute instances describe NAME ```
   - ``` gcloud compute machine-types list ```
   - ``` gcloud compute machine-types list --filter "zone:NAME"``` 
+  - ```  gcloud compute zones list --filter "region:(us-west2 us-west1)"```
 
 
