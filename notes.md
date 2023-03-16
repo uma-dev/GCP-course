@@ -55,8 +55,12 @@
   - ``` gcloud config list account ```
   - ``` gcloud config list compute/zone```
   - ``` gcloud config configurations list ```
+  - ``` gcloud config set project NAME ```
   - ``` gcloud config configurations active NAME ```
   - ``` gcloud config configurations create NAME ```
+  - ``` glcoud compute instances create NAME ```
+  - ``` gcloud compute instances describe NAME ```
 
 - The general structure of a command is as follows:
   - ```gcloud GROUP SUBGROUP ACTION ```
+
