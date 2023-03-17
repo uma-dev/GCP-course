@@ -77,3 +77,12 @@ Instances groups can be:
 
 - **Unmanaged** (UIG) different type instances not compatible with autoscaling, autohealing, etc.
 
+## Some escenarios and solutions
+
+| Scenario | Solution |
+| :------- | :--------|
+| MIG managed  application that survives ZONAL failures | Create multiple zones MIG. |
+| Group of multiple VMs with different configurations | Create an UIG. |
+|Preserve state in a MIG (like databases)| Create stateful MIG. |
+|High availability in MIG when there are hw or sw updates| Create a template with Availability police for automatic restart = on and on-host maintenance = migrate VM instance. |
+| Remove unhealty instances automatically | Create a MIG with autohealing properly configured|
