@@ -65,7 +65,7 @@ Some useful commands:
   - ``` gcloud compute instances delete NAME ```
   - ``` gcloud compute machine-types list ```
   - ``` gcloud compute machine-types list --filter "zone:NAME"``` 
-  - ```  gcloud compute zones list --filter "region:(us-west2 us-west1)"```
+  - ``` gcloud compute zones list --filter "region:(us-west2 us-west1)"```
   - ``` gcloud compute zones list --filter region:us-west1 --sort-by ~name (~ means reverse order) ```
   - ``` gcloud compute instances create my-test-vm --source-instance-template=NAME ```
 
