@@ -49,8 +49,7 @@ Whenever you need a system update (HW or SW) you can use Live migration. This me
 The general structure of a command is as follows:
   - ```gcloud GROUP SUBGROUP ACTION ```
 
-
-Some useful commands: 
+### Configuration
   - ```gcloud --version ```
   - ```gcloud init ```
   - ```gcloud config list ```
@@ -60,6 +59,8 @@ Some useful commands:
   - ```gcloud config set project NAME ```
   - ```gcloud config configurations active NAME ```
   - ```gcloud config configurations create NAME ```
+
+### Instances
   - ```glcoud compute instances create NAME ```
   - ```gcloud compute instances describe NAME ```
   - ```gcloud compute instances delete NAME ```
@@ -68,6 +69,16 @@ Some useful commands:
   - ```gcloud compute zones list --filter "region:(us-west2 us-west1)"```
   - ```gcloud compute zones list --filter region:us-west1 --sort-by ~name (~ means reverse order) ```
   - ```gcloud compute instances create my-test-vm --source-instance-template=NAME ```
+
+### Instance-groups
+ - ```gcloud compute instance-groups list```
+ - ```gcloud compute instance-groups managed list```
+ - ```gcloud compute instance-groups managed create NAME --zone ZONE --template TEMPLATE --size SIZE_NUMBER```
+ - ```gcloud compute instance-groups managed set-autoscaling NAME --zone=INSTANCE_ZONE --max-num-replicas=NUM_REPLICAS```
+ - ```gcloud compute instance-groups managed delete-autoscaling NAME --zone=INSTANCE_ZONE```
+ - ```gcloud compute instance-groups managed recreate-instances GROUP_NAME --instances=INSTANCE_NAME```
+ - ```gcloud compute instance-groups managed set-instance-template GROUP_NAME --template=NEW_TEMPLATE_NAME```
+ - ```gcloud compute instance-groups managed resize GROUP_NAME --size=SIZE```
 
 ## Instances group
 Instances groups can be: 
@@ -86,3 +97,4 @@ Instances groups can be:
 |Preserve state in a MIG (like databases)| Create stateful MIG. |
 |High availability in MIG when there are hw or sw updates| Create a template with Availability police for automatic restart = on and on-host maintenance = migrate VM instance. |
 | Remove unhealty instances automatically | Create a MIG with autohealing properly configured|
+|Avoid scale up and downs|Cool down period (inital delay)| 
