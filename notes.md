@@ -1,13 +1,12 @@
 # GCP Key features
 ## Zones
-- GCP have 20+ zones around the world
-- Each zone have al least 3 zones connected with low-l tency links.
-- Each zone has one or more discrete clusters.
+GCP have 20+ zones around the world.
+Each zone have al least 3 zones connected with low-l tency links. Each zone has one or more discrete clusters.
 - Region and zone utilization is based on latency, HW requirements, availability, regulations and cost.
 - Instances runs in a Region, but images and templates (unless uses zonal machines) are global. 
 
 ## Virtual Machines 
-- Google Compute Engine is a SERVICE to manage and create lifecycle of VM.
+Google Compute Engine is a SERVICE to manage and create lifecycle of VM.
 - You cannot  change a instance template, you can copy it and modify the copy.
 - Custom images can be used to create vm-instances with OS patches and/or software preinstalled.
 - You can share an image across projects.
@@ -21,9 +20,7 @@
 
 
 ## Cost 
-- In GCP you are billed per second.
-- For money saving, always choose the right machine type for your needs and image for your workload.
-- Whenever you have a predictable resources need, you can commit the use of a VM (Kubernetes or  Compute engine) for 1 or 3 years and get up to 70% of discount.
+In GCP you are billed per second.  For money saving, always choose the right machine type for your needs and image for your workload. Whenever you have a predictable resources need, you can commit the use of a VM (Kubernetes or  Compute engine) for 1 or 3 years and get up to 70% of discount.
 - **Preemptible VM** only last **24 hours**  or less due to system demands and they are 80% more cheaper but have a lot of disadvantages, e.g. not always available.
 - Also, Preemptible VM doesn't work with free tier credits.
 - The updated version of Preemptible VM is **Spot VM** and the key difference is that they **don't  have a maximum runtime**.
@@ -34,7 +31,7 @@
 - A budget can send you email alerts about the limits of your budget.
 
 ## Live migration 
-- Whenever you need a system update (HW or SW) you can use Live migration. This means that your running instance is migrated to another host on the same zone. Also, this proccess doesn't change any attributes or properties of the VM.
+Whenever you need a system update (HW or SW) you can use Live migration. This means that your running instance is migrated to another host on the same zone. Also, this proccess doesn't change any attributes or properties of the VM.
 - Preemptible instances doesn't support this feature.
 - The way to configure the Live Ligration is through Availability Policy section.
 
@@ -72,4 +69,11 @@ Some useful commands:
   - ``` gcloud compute zones list --filter region:us-west1 --sort-by ~name (~ means reverse order) ```
   - ``` gcloud compute instances create my-test-vm --source-instance-template=NAME ```
 
+## Instances group
+Instances groups can be: 
+- **Managed** (MIG) Identical instances autoscaling, autohealing, etc compatible. Also you can use:  
+  - Rolling updates (step by step updates)
+  - Canary deployment (test newer versions on a group of instances)
+
+- **Unmanaged** (UIG) different type instances not compatible with autoscaling, autohealing, etc.
 
