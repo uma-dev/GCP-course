@@ -51,23 +51,23 @@ The general structure of a command is as follows:
 
 
 Some useful commands: 
-  - ``` gcloud --version ```
-  - ``` gcloud init ```
-  - ``` gcloud config list ```
-  - ``` gcloud config list account ```
-  - ``` gcloud config list compute/zone```
-  - ``` gcloud config configurations list ```
-  - ``` gcloud config set project NAME ```
-  - ``` gcloud config configurations active NAME ```
-  - ``` gcloud config configurations create NAME ```
-  - ``` glcoud compute instances create NAME ```
-  - ``` gcloud compute instances describe NAME ```
-  - ``` gcloud compute instances delete NAME ```
-  - ``` gcloud compute machine-types list ```
-  - ``` gcloud compute machine-types list --filter "zone:NAME"``` 
-  - ``` gcloud compute zones list --filter "region:(us-west2 us-west1)"```
-  - ``` gcloud compute zones list --filter region:us-west1 --sort-by ~name (~ means reverse order) ```
-  - ``` gcloud compute instances create my-test-vm --source-instance-template=NAME ```
+  - ```gcloud --version ```
+  - ```gcloud init ```
+  - ```gcloud config list ```
+  - ```gcloud config list account ```
+  - ```gcloud config list compute/zone```
+  - ```gcloud config configurations list ```
+  - ```gcloud config set project NAME ```
+  - ```gcloud config configurations active NAME ```
+  - ```gcloud config configurations create NAME ```
+  - ```glcoud compute instances create NAME ```
+  - ```gcloud compute instances describe NAME ```
+  - ```gcloud compute instances delete NAME ```
+  - ```gcloud compute machine-types list ```
+  - ```gcloud compute machine-types list --filter "zone:NAME"``` 
+  - ```gcloud compute zones list --filter "region:(us-west2 us-west1)"```
+  - ```gcloud compute zones list --filter region:us-west1 --sort-by ~name (~ means reverse order) ```
+  - ```gcloud compute instances create my-test-vm --source-instance-template=NAME ```
 
 ## Instances group
 Instances groups can be: 
