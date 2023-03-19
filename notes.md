@@ -1,11 +1,14 @@
 # GCP Key features
+
 ## Zones
+
 GCP have 20+ zones around the world.
 Each zone have al least 3 zones connected with low-l tency links. Each zone has one or more discrete clusters.
 - Region and zone utilization is based on latency, HW requirements, availability, regulations and cost.
 - Instances runs in a Region, but images and templates (unless uses zonal machines) are global. 
 
 ## Virtual Machines 
+
 Google Compute Engine is a SERVICE to manage and create lifecycle of VM.
 - You cannot  change a instance template, you can copy it and modify the copy.
 - Custom images can be used to create vm-instances with OS patches and/or software preinstalled.
@@ -20,6 +23,7 @@ Google Compute Engine is a SERVICE to manage and create lifecycle of VM.
 
 
 ## Cost 
+
 In GCP you are billed per second.  For money saving, always choose the right machine type for your needs and image for your workload. Whenever you have a predictable resources need, you can commit the use of a VM (Kubernetes or  Compute engine) for 1 or 3 years and get up to 70% of discount.
 - **Preemptible VM** only last **24 hours**  or less due to system demands and they are 80% more cheaper but have a lot of disadvantages, e.g. not always available.
 - Also, Preemptible VM doesn't work with free tier credits.
@@ -31,17 +35,20 @@ In GCP you are billed per second.  For money saving, always choose the right mac
 - A budget can send you email alerts about the limits of your budget.
 
 ## Live migration 
+
 Whenever you need a system update (HW or SW) you can use Live migration. This means that your running instance is migrated to another host on the same zone. Also, this proccess doesn't change any attributes or properties of the VM.
 - Preemptible instances doesn't support this feature.
 - The way to configure the Live Ligration is through Availability Policy section.
 
 ## GPU
+
 - You can customize your VM with a GPU or use the predifined family of VM with GPU.
 - You can add GPU to your machine but you have to use images with GPU libraries and supported machine types (shared core and memory-optimized machines does not support this feature).
 - Adding GPU imply that VM won't support Live migration.
 - GPU carry higher cost, but is useful for High performance, math and graphics intensive.
 
 ##  GCloud CLI 
+
 - Gcloud is part of Google Cloud SDK (requires Python) you can install it on your computer.
 - Cloud Shell is a online shell, it has installed Gcloud.
 - Some GCP services have CLI tools such as BigQuery (bq), Cloud BigTable (cbt), Cloud Storage (gsutil) and Kubernetes (kubectl).
@@ -50,6 +57,7 @@ The general structure of a command is as follows:
   - ```gcloud GROUP SUBGROUP ACTION ```
 
 ### Configuration
+
   - ```gcloud --version ```
   - ```gcloud init ```
   - ```gcloud config list ```
@@ -61,6 +69,7 @@ The general structure of a command is as follows:
   - ```gcloud config configurations create NAME ```
 
 ### Instances
+
   - ```glcoud compute instances create NAME ```
   - ```gcloud compute instances describe NAME ```
   - ```gcloud compute instances delete NAME ```
@@ -71,6 +80,7 @@ The general structure of a command is as follows:
   - ```gcloud compute instances create my-test-vm --source-instance-template=NAME ```
 
 ### Instance-groups
+
  - ```gcloud compute instance-groups list```
  - ```gcloud compute instance-groups managed list```
  - ```gcloud compute instance-groups managed create NAME --zone ZONE --template TEMPLATE --size SIZE_NUMBER```
@@ -85,6 +95,7 @@ The general structure of a command is as follows:
  - ```gcloud compute instance-groups managed rolling action replace GROUP_NAME ```
 
 ## Instances group
+
 Instances groups can be: 
 - **Managed** (MIG) Identical instances autoscaling, autohealing, etc compatible. Also you can use:  
   - Rolling updates (step by step updates)
@@ -104,6 +115,7 @@ Instances groups can be:
 |Avoid scale up and downs|Cool down period (inital delay)| 
 
 ## Cloud Load balancing 
+
 Enables: High availability, Auto Scaling and Resiliency.
 Most common protocols such as:
 - Network layer: Internet Protocol (IP)
@@ -116,12 +128,14 @@ Most common protocols such as:
 
 - **Frontend** specify an IP and protocol
 
-- **Host and path rules** defines the rules for redirecting traffic to different backends based on 
+- **Host and path rules** defines the rules for redirecting traffic to different backends based on:
+
   - Path
   - Host 
   - HTTP headers
 
 ### Scenarios
+
 | Scenario | Solution |
 | :------- | :--------|
 | Only healty instances can receive traffic| Use health check |
