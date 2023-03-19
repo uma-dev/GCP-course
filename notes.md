@@ -80,6 +80,10 @@ The general structure of a command is as follows:
  - ```gcloud compute instance-groups managed set-instance-template GROUP_NAME --template=NEW_TEMPLATE_NAME```
  - ```gcloud compute instance-groups managed resize GROUP_NAME --size=SIZE```
 
+ After some update you can manage the new realese withou downtime:
+ - ```gcloud compute instance-groups managed rolling action restart GROUP_NAME ```
+ - ```gcloud compute instance-groups managed rolling action replace GROUP_NAME ```
+
 ## Instances group
 Instances groups can be: 
 - **Managed** (MIG) Identical instances autoscaling, autohealing, etc compatible. Also you can use:  
@@ -98,3 +102,15 @@ Instances groups can be:
 |High availability in MIG when there are hw or sw updates| Create a template with Availability police for automatic restart = on and on-host maintenance = migrate VM instance. |
 | Remove unhealty instances automatically | Create a MIG with autohealing properly configured|
 |Avoid scale up and downs|Cool down period (inital delay)| 
+
+## Cloud Load balancing 
+Enables: High availability, Auto Scaling and Resiliency.
+Most common protocols:
+- Network layer: Internet Protocol (IP)
+- Transport layer: TCP, TLS (Secure version of TCP) , UDP 
+- Application layer: HTTP, SMTP (email), FTP etc
+
+
+
+
+
