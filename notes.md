@@ -105,12 +105,18 @@ Instances groups can be:
 
 ## Cloud Load balancing 
 Enables: High availability, Auto Scaling and Resiliency.
-Most common protocols:
+Most common protocols such as:
 - Network layer: Internet Protocol (IP)
 - Transport layer: TCP, TLS (Secure version of TCP) , UDP 
 - Application layer: HTTP, SMTP (email), FTP etc
 
+### Terminology in google cloud balancing
 
+- **Backend** refers to a group of endpoints that receives traffic from the load balancer
 
+- **Frontend** specify an IP and protocol
 
-
+- **Host and path rules** defines the rules for redirecting traffic to different backends based on 
+  - Path
+  - Host 
+  - HTTP headers
