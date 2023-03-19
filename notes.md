@@ -120,3 +120,12 @@ Most common protocols such as:
   - Path
   - Host 
   - HTTP headers
+
+### Scenarios
+| Scenario | Solution |
+| :------- | :--------|
+| Only healty instances can receive traffic| Use health check |
+|High availability for instances| Use a MIG  accross different regions and configure a Load balancer.|
+|Route request to multiple microservices with the same Load balancer| Configure the "The host and path rules" to redirect to specific  microservice depending on the path|
+|Load balance Global external HTPPS traffic across backend instances, and multiple regions| Global external HTTP(S) Loas balancer|
+|SSL termination for Global non-HTTPS traffic with Load balancing| SSL Proxy Load Balancer |
