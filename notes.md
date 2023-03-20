@@ -143,3 +143,13 @@ Most common protocols such as:
 |Route request to multiple microservices with the same Load balancer| Configure the "The host and path rules" to redirect to specific  microservice depending on the path|
 |Load balance Global external HTPPS traffic across backend instances, and multiple regions| Global external HTTP(S) Loas balancer|
 |SSL termination for Global non-HTTPS traffic with Load balancing| SSL Proxy Load Balancer |
+
+## Managed Services in Google Cloud
+
+| Service | Details | Category|
+| :------- | :--------| :-------:|
+| Compute Engine|High performance and general purpose VM that can scale globally| IaaS |
+|Google Kubernetes Engine|Orchestrate containerized microservices on Kubernetes. Needs advanced **cluster configuration and monitoring**| CaaS|
+|App Engine|Enables highly scalable applications on "fully managed platform" | PaaS (CaaS Serverless)|
+|Cloud Functions |Build event driven applications using simple, single-purpose functions| FaaS Serverless|
+|Cloud Run |Highly scalable containerized applications.  **Does not need a cluster**| CaaS (Serverless)| 
