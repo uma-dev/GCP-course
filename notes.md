@@ -170,6 +170,7 @@ Some of the features that supports:
 | :------- |  :-------|
 | Lesser responsability | Lower flexibility ( Cannot add GPU)|
 
+App engine provides two different enviroments: Standar and Flexible
 
 ### Compute Engine
 
@@ -177,4 +178,4 @@ Some of the features that supports:
 | Advatages | Disadvantages |
 | :------- |  :-------|
 |More flexibility | More responsability ( Availability, installing software, choosing hardware and images)|
-|||
+
