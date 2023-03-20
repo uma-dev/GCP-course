@@ -146,6 +146,8 @@ Most common protocols such as:
 
 ## Managed Services in Google Cloud
 
+Quick overview
+
 | Service | Details | Category|
 | :------- | :--------| :-------:|
 | Compute Engine|High performance and general purpose VM that can scale globally| IaaS |
@@ -153,3 +155,26 @@ Most common protocols such as:
 |App Engine|Enables highly scalable applications on "fully managed platform" | PaaS (CaaS Serverless)|
 |Cloud Functions |Build event driven applications using simple, single-purpose functions| FaaS Serverless|
 |Cloud Run |Highly scalable containerized applications.  **Does not need a cluster**| CaaS (Serverless)| 
+
+### App Engine 
+Is a service in Google cloud since 2008 wich provides end to end application managment. You pay for resources provisioned.
+Some of the features that supports:
+- Java, Go, .NET, Node.js, PHP, Python, Ruby preconfigured runtimes. 
+- Use custom runtime and write in any language
+- Connect to variety of Google Cloud storage products like Cloud SQL
+- Automatic load balancing and auto-scaling
+- Managed platform updates and application health monitoring
+- Supports traffic spliting 
+
+| Advatages | Disadvantages |
+| :------- |  :-------|
+| Lesser responsability | Lower flexibility ( Cannot add GPU)|
+
+
+### Compute Engine
+
+
+| Advatages | Disadvantages |
+| :------- |  :-------|
+|More flexibility | More responsability ( Availability, installing software, choosing hardware and images)|
+|||
