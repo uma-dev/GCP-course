@@ -170,9 +170,31 @@ Some of the features that supports:
 | :------- |  :-------|
 | Lesser responsability | Lower flexibility ( Cannot add GPU)|
 
-App engine provides two different enviroments: **Standar** and **Flexible**
+App engine provides two different enviroments: **Standard** and **Flexible**.
+
+In **Standard** enviroment applications runs in __language specific sandboxes__ and two versions. It does not support some runtimes like C++ (.NET).
+- In the V1 (old versions) Python and PHP runtimes have some additional restrictions with network and libraries.
+- In the V2 (new versions) there are not restrictions.
+
+In **Flexible** enviroment  applications runs in Docker containers wich uses Docker Engine __virtual machines__ and support any runtime. Also provides access to background processes and local disks.
+
+Here it is a simple comparison:
+
+| Feature | Standard | Flexible |
+| :------- |  :-------| :---------|
+| Pricing | Instance hours| vCPU, Memory and persistent disk |
+|Scaling| Manual, **Basic** (Instances are created when request are received) and Automatic (continuously running workloads)| Manual and Automatic|
+| Scaling to zero|Yes |No (Minimum one instance)|
+| Instance startup time| **seconds**| minutes|
+|Rapid scaling (up and down) | **Yes**| No|
+|Max. request timeout | 1-10 minutes | **60 minutes** |
+|Local disk (storage) | Mostly except for Python and PHP. Can write to /tmp | Yes, ephemeral. New disk every startup |
+|SSH for debugging| No |**Yes**|
+
+ 
 
 ### Compute Engine
+
 
 
 | Advatages | Disadvantages |
