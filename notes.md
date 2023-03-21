@@ -201,14 +201,31 @@ Here it is a simple comparison:
 |Local disk (storage) | Mostly except for Python and PHP. Can write to /tmp | Yes, ephemeral. New disk every startup |
 |SSH for debugging| No |**Yes**|
 
-### Services
+### Request routing
+
+Routing URLs have the following structure:
+ - __default__ https://PROJECT_ID.REGION.appspot.com 
+ - __specific service__ https://SERVICE-dot-PROJECT_ID.appspot.com 
+ - __specific version of service__ https://VERSION-dot-SERVICE-dot-PROJECT_ID.REGION.appspot.com
+ 
+
+### Commands
+
 ```gcloud app services list```
 ```gcloud app versions list```
 ```gcloud app instances list```
 
+To create type 
+
+```gcloud app create --region=REGION```
+
 After a change in the app you must run
 
 ```gcloud app deploy (--version-NUMBER)```
+
+To use other filename of yaml use: 
+
+```gcloud app deploy app.yaml```
 
 After the new deploy the old version still running, you can check the URL in: 
 
@@ -219,12 +236,32 @@ After a change you can test your new version without launching it in the main UR
 
 ```gcloud app deploy --version-NUMBER --no-promote ```
 
-And find the new version using the browse option described earlier. To split traffic **by IP** between versions use:
+And find the new version using the browse option described earlier. Also you can open the Console dashboard with the following command:
+
+```gcloud app open-console --version=VERSION```
+
+### Traffic splitting 
+
+```gcloud app services set-traffic --split-by=OPTION ```
+- __Based on IP__: Accuracy issues because IP change, also the request from a single VPN IP cause to request go to the same version.
+- __Based on Cookies__: Cookies can be controlled from application.
+- __Random__: Splitting randomly.
+
+To split traffic **by IP** between versions use:
 
 ```gcloud app servicer --set-traffic --splits=vNUMBER=.5,vNUMBER=.5```
 
 To split it by **random** use:
 
 ```gcloud app services set-traffic --splits=v3=.5,v2=.5 --split-by=random```
+
+### Deploy an application without downtime 
+- Option 1: Deploy and shift at once with ```gcloud app deploy```
+- Option 2: Deploy with no promote  ```gcloud app deploy --no-promote``` and then shift traffic to second version with:
+  - All at once ```gcloud app services set-traffic SERVICE --splits V2=1```
+  - Gradually with migrate (not supported in flexible) ```--migrate```
+  - Manually with ```gcloud app services set-traffic SERVICE --splits=v2=.5,v1=.5```
+
+
 
 
