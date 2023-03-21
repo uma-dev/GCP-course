@@ -165,7 +165,7 @@ Most common protocols such as:
  - ```gcloud compute instance-groups managed rolling action replace GROUP_NAME ```
 -----
 ## App Engine 
-Is a service in Google cloud since 2008 which provides end to end application management. You pay for resources provisioned.
+Is a service in Google cloud since 2008 which provides end to end application management, is a good option for microservices. Also, App Engine in regional, so you cannot change the region of an application. You pay for resources provisioned.
 Some of the features that supports:
 - Java, Go, .NET, Node.js, PHP, Python, Ruby preconfigured runtimes. 
 - Use custom runtime and write in any language
@@ -176,7 +176,7 @@ Some of the features that supports:
 
 | Advantages | Disadvantages |
 | :------- |  :-------|
-| Lesser responsibility | Lower flexibility ( Cannot add GPU)|
+| Lesser responsibility | Lower flexibility ( Cannot add GPU) and lack of containers orchestration|
 
 ### Environments
 
@@ -194,7 +194,7 @@ Here it is a simple comparison:
 | :------- |  :-------| :---------|
 | Pricing | Instance hours| vCPU, Memory and persistent disk |
 |Scaling| Manual, **Basic** (Instances are created when request are received) and Automatic (continuously running workloads)| Manual and Automatic|
-| Scaling to zero|Yes |No (Minimum one instance)|
+| Scaling to zero|**Yes** |No (Minimum one container running)|
 | Instance startup time| **Seconds**| Minutes|
 |Rapid scaling (up and down) | **Yes**| No|
 |Max. request timeout | 1-10 minutes | **60 minutes** |
@@ -262,6 +262,28 @@ To split it by **random** use:
   - Gradually with migrate (not supported in flexible) ```--migrate```
   - Manually with ```gcloud app services set-traffic SERVICE --splits=v2=.5,v1=.5```
 
+### Yaml files
 
+ ```gcloud app deploy FILE.yaml```
 
+#### Cron
 
+- Allows you to run scheduled jobs for example:
+  - Send report by email every day 
+  - Refresh cache data every 30 minutes
+- Configured using cron.yaml and the command 
+
+#### Override routing rules
+- dispatch.yaml
+
+#### Manage task queues
+- queue.yaml
+
+### Scenarios 
+
+| Scenario | Solution |
+| :------- |  :-------| 
+|Two Google App Engine Apps in the same project | It is impossible to deploy two apps in the same project in App Engine, instead you can deploy multiple services and versions of each service |
+|Two Google App services in the same app | It is possible as described earlier |
+|Want to move Google App Engine App to different region | Cannot move apps from App Engine to another region, new project will be needed |
+|Perform Canary deployments| You can deploy a new version without shifting traffic and then split traffic/migrate to the new version |
