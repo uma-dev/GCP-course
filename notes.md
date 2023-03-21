@@ -203,10 +203,28 @@ Here it is a simple comparison:
 
 ### Services
 ```gcloud app services list```
-``` ```
-``` ```
-``` ```
-``` ```
-``` ```
-``` ```
+```gcloud app versions list```
+```gcloud app instances list```
+
+After a change in the app you must run
+
+```gcloud app deploy (--version-NUMBER)```
+
+After the new deploy the old version still running, you can check the URL in: 
+
+```gcloud app browse --version="NUMBER"```'
+```gcloud app browse --service=NAME --version="NUMBER"```
+
+After a change you can test your new version without launching it in the main URL with:
+
+```gcloud app deploy --version-NUMBER --no-promote ```
+
+And find the new version using the browse option described earlier. To split traffic **by IP** between versions use:
+
+```gcloud app servicer --set-traffic --splits=vNUMBER=.5,vNUMBER=.5```
+
+To split it by **random** use:
+
+```gcloud app services set-traffic --splits=v3=.5,v2=.5 --split-by=random```
+
 
