@@ -3,7 +3,7 @@
 ## Zones
 
 GCP have 20+ zones around the world.
-Each zone have al least 3 zones connected with low-l tency links. Each zone has one or more discrete clusters.
+Each zone have al least 3 zones connected with low-latency links. Each zone has one or more discrete clusters.
 - Region and zone utilization is based on latency, HW requirements, availability, regulations and cost.
 - Instances runs in a Region, but images and templates (unless uses zonal machines) are global. 
 
@@ -13,11 +13,11 @@ Google Compute Engine is a SERVICE to manage and create lifecycle of VM.
 - You cannot  change a instance template, you can copy it and modify the copy.
 - Custom images can be used to create vm-instances with OS patches and/or software preinstalled.
 - You can share an image across projects.
-- **Hardening** an image is the proccess of creating an image from a vm-instance that meets the security requirements of an enterprise.
+- **Hardening** an image is the process of creating an image from a vm-instance that meets the security requirements of an enterprise.
 - It is preferred to use a custom image rather than startup scripts.
 - For vCPUs/ memory changes, a VM instance has to be stopped.
 - A good practice is use labels to organize VMs.
-- Managment:
+- Management:
   - Default metrics: CPU, Network and Disk Throughput.
   - Cloud agent: Memory Utilization and Disk space.
 
@@ -28,7 +28,7 @@ In GCP you are billed per second.  For money saving, always choose the right mac
 - **Preemptible VM** only last **24 hours**  or less due to system demands and they are 80% more cheaper but have a lot of disadvantages, e.g. not always available.
 - Also, Preemptible VM doesn't work with free tier credits.
 - The updated version of Preemptible VM is **Spot VM** and the key difference is that they **don't  have a maximum runtime**.
-- Spot VM has a Dynamic pricing wich represents 60-90% of discount to on-demand VM. 
+- Spot VM has a Dynamic pricing which represents 60-90% of discount to on-demand VM. 
 - When you apart an static ip address you'll be billed, even if you aren't using it!
 - The storage attached to a compute instance generate a bill. even if the compute instance is stopped. 
 - Solutions to those problems are: Remove any static ip address that is not used and create budget alerts.
@@ -36,21 +36,21 @@ In GCP you are billed per second.  For money saving, always choose the right mac
 
 ## Live migration 
 
-Whenever you need a system update (HW or SW) you can use Live migration. This means that your running instance is migrated to another host on the same zone. Also, this proccess doesn't change any attributes or properties of the VM.
+Whenever you need a system update (HW or SW) you can use Live migration. This means that your running instance is migrated to another host on the same zone. Also, this process doesn't change any attributes or properties of the VM.
 - Preemptible instances doesn't support this feature.
-- The way to configure the Live Ligration is through Availability Policy section.
+- The way to configure the Live Migration is through Availability Policy section.
 
 ## GPU
 
-- You can customize your VM with a GPU or use the predifined family of VM with GPU.
+- You can customize your VM with a GPU or use the predefined family of VM with GPU.
 - You can add GPU to your machine but you have to use images with GPU libraries and supported machine types (shared core and memory-optimized machines does not support this feature).
 - Adding GPU imply that VM won't support Live migration.
 - GPU carry higher cost, but is useful for High performance, math and graphics intensive.
 
 ##  GCloud CLI 
 
-- Gcloud is part of Google Cloud SDK (requires Python) you can install it on your computer.
-- Cloud Shell is a online shell, it has installed Gcloud.
+- gcloud is part of Google Cloud SDK (requires Python) you can install it on your computer.
+- Cloud Shell is a online shell, it has installed gcloud.
 - Some GCP services have CLI tools such as BigQuery (bq), Cloud BigTable (cbt), Cloud Storage (gsutil) and Kubernetes (kubectl).
 
 The general structure of a command is as follows:
@@ -70,7 +70,7 @@ The general structure of a command is as follows:
 
 ### Instances
 
-  - ```glcoud compute instances create NAME ```
+  - ```gcloud compute instances create NAME ```
   - ```gcloud compute instances describe NAME ```
   - ```gcloud compute instances delete NAME ```
   - ```gcloud compute machine-types list ```
@@ -90,20 +90,20 @@ The general structure of a command is as follows:
  - ```gcloud compute instance-groups managed set-instance-template GROUP_NAME --template=NEW_TEMPLATE_NAME```
  - ```gcloud compute instance-groups managed resize GROUP_NAME --size=SIZE```
 
- After some update you can manage the new realese withou downtime:
+ After some update you can manage the new release without downtime:
  - ```gcloud compute instance-groups managed rolling action restart GROUP_NAME ```
  - ```gcloud compute instance-groups managed rolling action replace GROUP_NAME ```
 
 ## Instances group
 
 Instances groups can be: 
-- **Managed** (MIG) Identical instances autoscaling, autohealing, etc compatible. Also you can use:  
+- **Managed** (MIG) Identical instances autoscaling, auto-healing, etc compatible. Also you can use:  
   - Rolling updates (step by step updates)
   - Canary deployment (test newer versions on a group of instances)
 
-- **Unmanaged** (UIG) different type instances not compatible with autoscaling, autohealing, etc.
+- **Unmanaged** (UIG) different type instances not compatible with autoscaling, auto-healing, etc.
 
-## Some escenarios and solutions
+## Some scenarios and solutions
 
 | Scenario | Solution |
 | :------- | :--------|
@@ -111,8 +111,8 @@ Instances groups can be:
 | Group of multiple VMs with different configurations | Create an UIG. |
 |Preserve state in a MIG (like databases)| Create stateful MIG. |
 |High availability in MIG when there are hw or sw updates| Create a template with Availability police for automatic restart = on and on-host maintenance = migrate VM instance. |
-| Remove unhealty instances automatically | Create a MIG with autohealing properly configured|
-|Avoid scale up and downs|Cool down period (inital delay)| 
+| Remove unhealthy instances automatically | Create a MIG with auto-healing properly configured|
+|Avoid scale up and downs|Cool down period (initial delay)| 
 
 ## Cloud Load balancing 
 
@@ -138,10 +138,10 @@ Most common protocols such as:
 
 | Scenario | Solution |
 | :------- | :--------|
-| Only healty instances can receive traffic| Use health check |
-|High availability for instances| Use a MIG  accross different regions and configure a Load balancer.|
+| Only healthy instances can receive traffic| Use health check |
+|High availability for instances| Use a MIG  across different regions and configure a Load balancer.|
 |Route request to multiple microservices with the same Load balancer| Configure the "The host and path rules" to redirect to specific  microservice depending on the path|
-|Load balance Global external HTPPS traffic across backend instances, and multiple regions| Global external HTTP(S) Loas balancer|
+|Load balance Global external HTPPS traffic across backend instances, and multiple regions| Global external HTTP(S) Load balancer|
 |SSL termination for Global non-HTTPS traffic with Load balancing| SSL Proxy Load Balancer |
 
 ## Managed Services in Google Cloud
@@ -157,26 +157,26 @@ Quick overview
 |Cloud Run |Highly scalable containerized applications.  **Does not need a cluster**| CaaS (Serverless)| 
 
 ### App Engine 
-Is a service in Google cloud since 2008 wich provides end to end application managment. You pay for resources provisioned.
+Is a service in Google cloud since 2008 which provides end to end application management. You pay for resources provisioned.
 Some of the features that supports:
 - Java, Go, .NET, Node.js, PHP, Python, Ruby preconfigured runtimes. 
 - Use custom runtime and write in any language
 - Connect to variety of Google Cloud storage products like Cloud SQL
 - Automatic load balancing and auto-scaling
 - Managed platform updates and application health monitoring
-- Supports traffic spliting 
+- Supports traffic splitting 
 
-| Advatages | Disadvantages |
+| Advantages | Disadvantages |
 | :------- |  :-------|
-| Lesser responsability | Lower flexibility ( Cannot add GPU)|
+| Lesser responsibility | Lower flexibility ( Cannot add GPU)|
 
-App engine provides two different enviroments: **Standard** and **Flexible**.
+App engine provides two different environments: **Standard** and **Flexible**.
 
-In **Standard** enviroment applications runs in __language specific sandboxes__ and two versions. It does not support some runtimes like C++ (.NET).
+In **Standard** environment applications runs in __language specific sandboxes__ and two versions. It does not support some runtimes like C++ (.NET).
 - In the V1 (old versions) Python and PHP runtimes have some additional restrictions with network and libraries.
 - In the V2 (new versions) there are not restrictions.
 
-In **Flexible** enviroment  applications runs in Docker containers wich uses Docker Engine __virtual machines__ and support any runtime. Also provides access to background processes and local disks.
+In **Flexible** environment  applications runs in Docker containers which uses Docker Engine __virtual machines__ and support any runtime. Also provides access to background processes and local disks.
 
 Here it is a simple comparison:
 
@@ -185,7 +185,7 @@ Here it is a simple comparison:
 | Pricing | Instance hours| vCPU, Memory and persistent disk |
 |Scaling| Manual, **Basic** (Instances are created when request are received) and Automatic (continuously running workloads)| Manual and Automatic|
 | Scaling to zero|Yes |No (Minimum one instance)|
-| Instance startup time| **seconds**| minutes|
+| Instance startup time| **Seconds**| Minutes|
 |Rapid scaling (up and down) | **Yes**| No|
 |Max. request timeout | 1-10 minutes | **60 minutes** |
 |Local disk (storage) | Mostly except for Python and PHP. Can write to /tmp | Yes, ephemeral. New disk every startup |
@@ -197,7 +197,7 @@ Here it is a simple comparison:
 
 
 
-| Advatages | Disadvantages |
+| Advantages | Disadvantages |
 | :------- |  :-------|
-|More flexibility | More responsability ( Availability, installing software, choosing hardware and images)|
+|More flexibility | More responsibility ( Availability, installing software, choosing hardware and images)|
 
