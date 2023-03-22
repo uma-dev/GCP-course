@@ -287,3 +287,13 @@ To split it by **random** use:
 |Two Google App services in the same app | It is possible as described earlier |
 |Want to move Google App Engine App to different region | Cannot move apps from App Engine to another region, new project will be needed |
 |Perform Canary deployments| You can deploy a new version without shifting traffic and then split traffic/migrate to the new version |
+
+## Google Kubernetes Engine
+
+Open source container orchestration solution. It needs a Cluster configuration (Remember that autopilot simplifies cluster management) and upgrades. It uses a **Container-Optimized OS** (hardened by Google), supports persistent disks, local SSD and provides features such as:
+- Zero downtime deployments
+- Service discovery
+- Self healing
+- Load balancer
+- Auto scaling
+
