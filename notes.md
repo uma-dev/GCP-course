@@ -290,10 +290,89 @@ To split it by **random** use:
 
 ## Google Kubernetes Engine
 
-Open source container orchestration solution. It needs a Cluster configuration (Remember that autopilot simplifies cluster management) and upgrades. It uses a **Container-Optimized OS** (hardened by Google), supports persistent disks, local SSD and provides features such as:
+Open source container orchestration solution. It needs a Cluster configuration (Remember that autopilot simplifies cluster management) and upgrades. It uses a **Container-Optimized OS** (hardened by Google), supports persistent disks, local SSD and it is also possible to add GPU.
+The GKE provides features such as:
 - Zero downtime deployments
 - Service discovery
 - Self healing
 - Load balancer
 - Auto scaling
 
+### Cluster modes
+- Autopilot: The goal of autopilot is to reduce the cost of operating a container. Google manages the cluster. 
+- Standard: Pay and configure each node. 
+ 
+### Commands 
+Create a cluster
+
+```gcloud container clusters create```
+
+Connect to cluster with:
+
+```gcloud container clusters get-credentials CLUSTER_NAME --zone=ZONE --project=PROJECT_NAME```
+
+Then create a deployment:
+
+```kubectl create deployment NAME --image=in28min/hello-world-rest-api:0.0.1.RELEASE```
+
+Can check the deployment with 
+
+```kubectl get deployment```
+
+Then expose the deployment (to the external world) to create a service
+
+```kubectl expose deployment NAME --type=LoadBalancer --port=8080```
+
+and then get the services with:
+
+```kubectl get services```
+
+you can also scale the number of instances (services) of deployment with:
+
+```kubectl scale deployment NAME --replicas=3```
+
+and you can verify that there are 3 instances now with:
+
+```kubectl get deployment```
+
+You can also manually scale the number of nodes in the cluster with:
+
+```gcloud container clusters resize CLUSTER_NAME --node-pool NODE_POOL_NAME --num-nodes=2 --zone=ZONE```
+
+Also you can auto scale the deployment (instances) with:
+
+```kubectl autoscale deployment DEPLOYMENT_NAME --max=NODES_NUMBER --cpu-percent=PERCENTAGE```
+
+Similarly you can set autoscale the Kubernetes cluster with: 
+
+```gcloud container clusters update CLUSTER_NAME --enable-autoscaling --min-nodes=MIN --max-nodes=MAX```
+
+to see the pods you can use:
+
+```kubectl get pods```
+
+to see the hpa:
+
+```kubectl get hpa```
+
+the, you can create a config map with:
+
+```kubectl create configmap CONFIGMAP_NAME --from-literal=RDS_DB_NAME=todos```
+
+the you can see it with:
+
+```kubectl get configmap```
+
+or describe it with:
+
+```kubectl describe configmap CONFIGMAP_NAME```
+
+You can also store values as a secret (also called a secret map) with:
+
+```kubectl describe secret SECRET_NAME```
+
+It is important to remember that there are two ways to deploy things in Kubernetes, first one is with commands as described earlier or you can use YAML files.
+
+Even from terminal you can deploy with ```kubectl apply -f deployment.yaml```
+
+(Node pool is a set of nodes with the same configuration within a cluster)
