@@ -249,7 +249,7 @@ And find the new version using the browse option described earlier. Also you can
 
 To split traffic **by IP** between versions use:
 
-```gcloud app servicer --set-traffic --splits=vNUMBER=.5,vNUMBER=.5```
+```gcloud app services --set-traffic --splits=vNUMBER=.5,vNUMBER=.5```
 
 To split it by **random** use:
 
@@ -413,10 +413,10 @@ To delete cluster use:
 
 - There are lots of types of clusters: 
     - Zonal cluster 
-      - Single zone
-      - Multi zonal
-    - Regional 
-    - Private (only internal IP address)
+      - Single zone (Single control plane, nodes in same zone)
+      - Multi zonal (Single control plane, nodes in different zones)
+    - Regional (Multiple control plane, nodes in different regions)
+    - Private (only internal IP address in VPC) 
     - Alpha (early features)
 
 - Node pool is a set of nodes with the same configuration within a cluster.
@@ -431,4 +431,3 @@ They are the smallest deployable unit in Kubernetes and they can contain one or 
   - IP Address
   - Ports 
   - Volumes
-  
