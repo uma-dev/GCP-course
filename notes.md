@@ -371,7 +371,7 @@ You can also store values as a secret (also called a secret map) with:
 
 ```kubectl describe secret SECRET_NAME```
 
-It is important to remember that there are two ways to deploy things in Kubernetes, first one is with commands as described earlier or you can use a declarative option using YAML files.
+It is important to remember that there are **two ways to deploy things in Kubernetes**, first one is with commands as described earlier or you can use a declarative option using YAML files.
 
 Even from terminal you can deploy with ```kubectl apply -f deployment.yaml```
 
@@ -422,6 +422,7 @@ To delete cluster use:
 - Node pool is a set of nodes with the same configuration within a cluster.
 
 ### Pods 
+
 They are the smallest deployable unit in Kubernetes and they can contain one or more containers. Some of their features are:
 
 - Each pod is assigned an ephemeral IP address
@@ -431,3 +432,25 @@ They are the smallest deployable unit in Kubernetes and they can contain one or 
   - IP Address
   - Ports 
   - Volumes
+
+### Deployments
+
+A deployment represents a service with all of its versions.  It **ensures new releases with zero downtime**
+
+```kubectl set image deployment DEPLOYMENT_NAME ACTUAL_IMAGE=NEW_IMAGE```
+
+**Replica set** is a way to ensure that a specific number of pods are running specific microservice version. You can view the replicasets with:
+
+```kubectl get replicasets```
+
+### Services 
+- Cluster IP (communication inside the cluster)
+- Load balancer (exposes service using cloud provider's load balancer)
+- Node Port (exposes service on each node's IP at a static port)
+
+### Image Repository
+
+Container Registry is a private location to store Images repositories provided by GCP. 
+- It is similar to Docker Hub, which is a public container registry.
+- Can secure images and analyze for vulnerabilities. 
+- Naming: **HostName/ProjectID/Image:Tag-gcr.io/ProjectName/Microservice:version**
