@@ -400,4 +400,21 @@ To delete cluster use:
 
 ```gcloud container clusters delete```
 
-**Node pool is a set of nodes with the same configuration within a cluster.
+
+- Cluster is a group of Compute Engine instances, it has:
+   - Master node (which manages the cluster).
+      - API server which handles communications with nodes and outside.
+      - Scheduler which decides placement of pods.
+      - Control manager which manages deployments and replicasets.
+      - etcd which is a distributed database storing the cluster state.
+   - Worker nodes (who run the workloads [pods]).
+      - Kubelet which manages the communication with master node(s).
+
+- There are lots of types of clusters: 
+    - Zonal cluster 
+      - Single zone
+      - Multi zonal
+    - Regional 
+    - Private (only internal IP address)
+    - Alpha (early features)
+- Node pool is a set of nodes with the same configuration within a cluster.
