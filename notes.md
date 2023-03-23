@@ -400,6 +400,7 @@ To delete cluster use:
 
 ```gcloud container clusters delete```
 
+### Clusters
 
 - Cluster is a group of Compute Engine instances, it has:
    - Master node (which manages the cluster).
@@ -417,4 +418,17 @@ To delete cluster use:
     - Regional 
     - Private (only internal IP address)
     - Alpha (early features)
+
 - Node pool is a set of nodes with the same configuration within a cluster.
+
+### Pods 
+They are the smallest deployable unit in Kubernetes and they can contain one or more containers. Some of their features are:
+
+- Each pod is assigned an ephemeral IP address
+- The containers inside a pod shares:
+  - Network
+  - Storage
+  - IP Address
+  - Ports 
+  - Volumes
+  
