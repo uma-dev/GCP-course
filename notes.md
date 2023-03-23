@@ -371,8 +371,33 @@ You can also store values as a secret (also called a secret map) with:
 
 ```kubectl describe secret SECRET_NAME```
 
-It is important to remember that there are two ways to deploy things in Kubernetes, first one is with commands as described earlier or you can use YAML files.
+It is important to remember that there are two ways to deploy things in Kubernetes, first one is with commands as described earlier or you can use a declarative option using YAML files.
 
 Even from terminal you can deploy with ```kubectl apply -f deployment.yaml```
 
-(Node pool is a set of nodes with the same configuration within a cluster)
+Also, you can list your node-pools with
+
+```gcloud container node-pools list --zone=us-central1-c```
+
+You can deploy a new service which need nodes with GPU:
+
+- Attach a new node pool with: 
+```gcloud container node-pools create POOL_NAME --cluster CLUSTER_NAME```
+
+then, you can view it with:
+ 
+```gcloud container node-pools list --cluster CLUSTER_NAME```
+
+Finally you can deploy the new service to the new pool by setting the node selector (The node selector is where you can choose the pool used in the service).
+
+nodeSelector: cloud.google.com/gke-nodepool:POOL_NAME
+
+To delete  microservices use: 
+```kubectl delete service```
+```kubectl delete deployment```
+
+To delete cluster use: 
+
+```gcloud container clusters delete```
+
+**Node pool is a set of nodes with the same configuration within a cluster.
