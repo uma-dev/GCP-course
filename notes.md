@@ -411,6 +411,8 @@ To delete cluster use:
    - Worker nodes (who run the workloads [pods]).
       - Kubelet which manages the communication with master node(s).
 
+- The above statements means that some CPU on the nodes is reserved by control plane.
+
 - There are lots of types of clusters: 
     - Zonal cluster 
       - Single zone (Single control plane, nodes in same zone)
@@ -454,3 +456,9 @@ Container Registry is a private location to store Images repositories provided b
 - It is similar to Docker Hub, which is a public container registry.
 - Can secure images and analyze for vulnerabilities. 
 - Naming: **HostName/ProjectID/Image:Tag-gcr.io/ProjectName/Microservice:version**
+
+You can create your own images following the next steps:
+
+- Build an image with ```docker build -t```
+- Run it with ```docker run -d -p```
+- Push it with ```docker push```
