@@ -445,7 +445,7 @@ A deployment represents a service with all of its versions.  It **ensures new re
 
 ```kubectl get replicasets```
 
-### Services 
+### Type of Services 
 - Cluster IP (communication inside the cluster)
 - Load balancer (exposes service using cloud provider's load balancer)
 - Node Port (exposes service on each node's IP at a static port)
@@ -463,8 +463,26 @@ You can create your own images following the next steps:
 - Run it with ```docker run -d -p```
 - Push it with ```docker push```
 
-## Delete the GKE service deployment and cluster step by step
+### Delete the GKE service deployment and cluster step by step
 
 - Delete the service with: ```kubectl delete service SERVICE_NAME```
 - Delete the deployment with: ```kubectl delete deployment DEPLOYMENT_NAME```
 - Delete the cluster with: ```gcloud container cluster delete CLUSTER_NAME```
+
+## Cloud Functions 
+
+Is useful when you want to execute some code when an event happens / is triggered from:
+ 
+- Cloud Storage 
+- Cloud Pub/Sub
+- HTTP POST/GET/DELETE/PUT/OPTIONS
+- Firebase
+- Cloud Firestore
+- Stack driver logging
+
+Another key features are:
+
+- Don't have to worry about servers. 
+- Pay for what you use (number of invocations, compute time, memory and CPU provisioned)
+- Are time bound: timeout min 1 and MAX 60
+- 2 Cloud Functions versions for the **environment**.
