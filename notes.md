@@ -290,7 +290,7 @@ To split it by **random** use:
 
 ## Google Kubernetes Engine
 
-Open source container orchestration solution. It needs a Cluster configuration (Remember that autopilot simplifies cluster management) and upgrades. It uses a **Container-Optimized OS** (hardened by Google), supports persistent disks, local SSD and it is also possible to add GPU.
+Open source container orchestration solution. Kubernetes also supports **Stateful** deployments. It needs a Cluster configuration (Remember that autopilot simplifies cluster management) and upgrades. It uses a **Container-Optimized OS** (hardened by Google), supports persistent disks, local SSD and it is also possible to add GPU.
 The GKE provides features such as:
 - Zero downtime deployments
 - Service discovery
@@ -462,3 +462,9 @@ You can create your own images following the next steps:
 - Build an image with ```docker build -t```
 - Run it with ```docker run -d -p```
 - Push it with ```docker push```
+
+## Delete the GKE service deployment and cluster step by step
+
+- Delete the service with: ```kubectl delete service SERVICE_NAME```
+- Delete the deployment with: ```kubectl delete deployment DEPLOYMENT_NAME```
+- Delete the cluster with: ```gcloud container cluster delete CLUSTER_NAME```
