@@ -486,3 +486,11 @@ Another key features are:
 - Pay for what you use (number of invocations, compute time, memory and CPU provisioned)
 - Are time bound: timeout min 1 and MAX 60
 - 2 Cloud Functions versions for the **environment**.
+
+### Cloud run 
+
+The idea with cloud run is "container to production in seconds". There is no infrastructure management and is **pay-per-use** and it is build on top of an open standard Knative. Some of other features are: 
+- Portable (container based architecture)
+- No limitations in languages 
+- Integrates Cloud Code, Cloud Build, Cloud Monitoring and Cloud Logging Integrations.
+
