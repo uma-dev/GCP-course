@@ -487,6 +487,13 @@ Another key features are:
 - Are time bound: timeout min 1 and MAX 60
 - 2 Cloud Functions versions for the **environment**.
 
+### Cloud functions V2
+
+It is built on top of Cloud Run and Eventarc, it is also the recommended version to use of Cloud functions. 
+- The timeout is up to 60 minutes for HTTP-triggered functions.
+- Instance sizes up to 16GiB RAM with 4 vCPU (vs 8GB RAM with 2 vCPU in V1)
+- Up to 100 concurrent request per function instance
+
 ## Cloud run 
 
 The idea with cloud run is "container to production in seconds". There is no infrastructure management and is **pay-per-use** and it is build on top of an open standard Knative. Some of other features are: 
