@@ -564,7 +564,7 @@ Data it is not stored in raw format so data in databases, hard disk, file server
 - Symmetric: same key for encryption and decryption
 - Asymmetric: a public (encrypt) and a private (decrypt) key, 
 
-### Cloud KMS\
+### Cloud KMS
 
 - Used to create and manage cryptographic keys (symmetric and asymmetric). 
 - Control their use in applications and GCP services (integrates with almost all GCP services)
