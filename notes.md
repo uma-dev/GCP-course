@@ -487,12 +487,42 @@ Another key features are:
 - Are time bound: timeout min 1 and MAX 60
 - 2 Cloud Functions versions for the **environment**.
 
+Another  features are: 
+- Autoscaling
+- One function instance handles ONE request at a time
+- Has the typical (serverless architectures) problem of __cold start__ which can be solved by a min number of instances
+
 ### Cloud functions V2
 
 It is built on top of Cloud Run and Eventarc, it is also the recommended version to use of Cloud functions. 
 - The timeout is up to 60 minutes for HTTP-triggered functions.
 - Instance sizes up to 16GiB RAM with 4 vCPU (vs 8GB RAM with 2 vCPU in V1)
 - Up to 100 concurrent request per function instance
+- Supports multiple active versions/revisions 
+- Supports traffic splitting between revisions/versions.
+- Supports multiple request AT THE SAME TIME (concurrency) 
+- Max 1000 concurrent invocations at the same time
+
+### Commands
+
+```gcloud functions deploy NAME```
+
+Options:
+
+  - ```--docker-registry```
+  - ```--docker-repository```
+  - ```--gen2```
+  - ```--runtime```
+  - ```--service-account```
+  - ```--timeout```
+  - ```--max-instances```
+  - ```--min-instances```
+  - ```--source``` (ZIP file or source repo URL or Local file)
+  - trigger:
+    - ```--trigger-bucket```
+    - ```--trigger-http```
+    - ```--trigger-topic```
+    - ```--trigger-event-filters``` (gen2)
 
 ## Cloud run 
 
