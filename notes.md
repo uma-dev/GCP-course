@@ -549,3 +549,23 @@ Adjust traffic assignments with:
 
 ```gcloud run services update-traffic SERVICE --to-revisions=V2=10,V1=90```
 
+## Encryption in Google Cloud (KMS)
+
+### Data States 
+ 
+- Data in rest (stored hard disk, database, etc)
+- Data in motion (being transferred across a network e.g. app talking to a database)
+- Data in use (Data in RAM)
+
+Data it is not stored in raw format so data in databases, hard disk, file servers, etc needs to be encrypted. 
+
+###  Types of encryption 
+
+- Symmetric: same key for encryption and decryption
+- Asymmetric: a public (encrypt) and a private (decrypt) key, 
+
+### Cloud KMS\
+
+- Used to create and manage cryptographic keys (symmetric and asymmetric). 
+- Control their use in applications and GCP services (integrates with almost all GCP services)
+- Provides an API to encrypt, decrypt or sign data
