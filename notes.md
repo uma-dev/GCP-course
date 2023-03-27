@@ -592,7 +592,7 @@ Very flexible, the performance scales with size, the lifecycle is independent fr
 - **Local SSD** (on the same host as the virtual machine) 
 Provides high IOPS and low latency but data only persist until instance is running. Data is encrypted  but only some machine types support this feature and it is physically attached to a VM instance.
 
-### Comparison 
+### Comparison PD vs Local SSD
 
 | Feature | PD | L SSDs |
 | :------- |  :-------| :---- |
@@ -601,3 +601,14 @@ Provides high IOPS and low latency but data only persist until instance is runni
 |I/O speed| Lower due to network| 10-100x faster|
 |Snapshots|Supported| Not supported|
 |Use case| Permanent storage| Ephemeral storage|
+
+### Comparison PD standard vs PD balanced
+
+| Feature | PD Standard | PD Balanced |L SSDs |
+| :------- |  :-------| :---- | :------ |
+|Underlying storage| HDD| SSD| SSD|
+|Referred to as| pd-standard | pd-balanced| pd-ssd|
+|Performance for sequential IOPS| good| good| very good|
+|Performance for random IOPS| bad| good| very good|
+|Cost|--| -+| ++ |
+|Use cases|big data | Balance between cost-performance| High performance|
