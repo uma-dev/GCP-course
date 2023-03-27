@@ -585,7 +585,8 @@ Allows multiple virtual servers attached to a file storage,
 Allows only one virtual server attached to a (writing) block and multiple virtual servers attached to read-only blocks. 
 
 - __Persistent disks__ (somewhere else in the network) 
-Very flexible, the performance scales with size, the lifecycle is independent from VM.
+Very flexible, the performance scales with size, the lifecycle is independent from VM. 
+It allows snapshots (__incremental__ because they save changes between them) and configure a schedule no more often than 1 hour. It is recommended to delete unnecessary snapshots because you don't lose data. 
   - Zonal: data replicated in one zone
   - Regional: data replicated in multiple zones (high durability) but the cost can be the double of zonal.
 
