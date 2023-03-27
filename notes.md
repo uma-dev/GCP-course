@@ -578,7 +578,7 @@ There are two types of storage that can be attached to a virtual machine in GCP:
 ### File Storage
 
 Allows multiple virtual servers attached to a file storage,
-- __Filestore__  It allows high performance storage. (needs to be attached via SSH)
+- __Filestore__  It allows high performance storage. (needs to be attached via SSH) it works with Google Cloud Engine and Kubernetes. Allows throughput up to 16 GB/s and storage up to 320 TB. 
 
 ### Block Storage 
 
@@ -670,3 +670,9 @@ To take snapshot
 - ```gcloud compute images deprecate IMAGE --state=DEPRECATED```
 - ```gcloud compute images export --image=IMAGE --destination-uri=URI --export-format=vmdk --project=PROJECT```
 - ```gcloud compute images delete IMAGE1 IMAGE2```
+
+### Global, regional and zonal resources
+
+| Global | Regional | Zonal |
+| :------- |  :-------| :------|
+| Images, Snapshots and Instance templates (not applicable for zonal resources) | Persistent disk, Regional managed instance groups| Persistent disk, Instances and Zonal managed instance groups|
