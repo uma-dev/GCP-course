@@ -549,7 +549,7 @@ Adjust traffic assignments with:
 
 ```gcloud run services update-traffic SERVICE --to-revisions=V2=10,V1=90```
 
-## Encryption in Google Cloud (KMS)
+## Encryption in Google Cloud - Key Management System (KMS)
 
 ### Data States 
  
@@ -632,3 +632,23 @@ Remember that
 |Instance cloning and replication|yes|no|yes|yes|
 |VM instance configuration|yes|no|no|yes|
 
+#### Commands 
+
+- ```gcloud compute disks list```
+
+- ```gcloud compute disks create NAME --zone=ZONE```
+
+  - ```--size=SIZE```
+  - ```--type=TYPE```
+  - ```--image or --image-family or -source-disk or --source-snapshot```
+  - ```--kms-key or --kms-project```
+
+To increase disk size: 
+
+- ```gcloud compute disks resize INSTANCE --size=SIZE_UNITS --zone=ZONE```
+
+To take snapshot
+
+- ```gcloud compute disks snapshot DISK_NAME --zone=ZONE --snapshot-name=SNAPSHOT_NAME```
+
+- ```gcloud compute disks snapshot list/create/delete```
