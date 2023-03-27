@@ -632,7 +632,9 @@ Remember that
 |Instance cloning and replication|yes|no|yes|yes|
 |VM instance configuration|yes|no|no|yes|
 
-#### Commands 
+#### Commands
+
+**Disk**
 
 - ```gcloud compute disks list```
 
@@ -647,8 +649,24 @@ To increase disk size:
 
 - ```gcloud compute disks resize INSTANCE --size=SIZE_UNITS --zone=ZONE```
 
+**Snapshot**
+
 To take snapshot
 
 - ```gcloud compute disks snapshot DISK_NAME --zone=ZONE --snapshot-name=SNAPSHOT_NAME```
 
 - ```gcloud compute disks snapshot list/create/delete```
+
+**Images**
+
+- ```gcloud compute images list/update/import/export/describe/deprecate/create```
+
+- ```gcloud compute images create NAME```
+  - ```--source-disk=DISK --source-disk-zone=ZONE```
+  - ```--source-snapshot=SOURCE```
+  - ```--source-image=IMAGE --source-image-project=PROJECT```
+  - ```-source-image-family=FAMILY --source-image-project=PROJECT```
+
+- ```gcloud compute images deprecate IMAGE --state=DEPRECATED```
+- ```gcloud compute images export --image=IMAGE --destination-uri=URI --export-format=vmdk --project=PROJECT```
+- ```gcloud compute images delete IMAGE1 IMAGE2```
