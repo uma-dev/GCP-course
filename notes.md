@@ -613,3 +613,15 @@ Provides high IOPS and low latency but data only persist until instance is runni
 |Performance for random IOPS| bad| good| very good|
 |Cost|--| -+| ++ |
 |Use cases|big data | Balance between cost-performance| High performance|
+
+### Snapshots schedule 
+
+Allows you to schedule a snapshot and the auto-delete for older images. You need to edit a existing disk in order to attach to created snapshot schedule.
+
+### Machine Images 
+ 
+Machine types != images
+
+Remember that 
+- Images contain is created from boot persistent disk (contains OS)
+- Machine images is created from a Machine instances (configuration, metadata, permissions and data from one or more disk)
