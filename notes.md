@@ -569,3 +569,19 @@ Data it is not stored in raw format so data in databases, hard disk, file server
 - Used to create and manage cryptographic keys (symmetric and asymmetric). 
 - Control their use in applications and GCP services (integrates with almost all GCP services)
 - Provides an API to encrypt, decrypt or sign data
+- Can be used to store secrets on the cloud
+
+## Block and File storage in GCP
+
+There are two types of storage that can be attached to a virtual machine in GCP:
+
+**File Storage**: Allows multiple virtual servers attached to a file storage,
+- __Filestore__  It allows high performance storage.
+
+**Block Storage**: Allows only one virtual server attached to a (writing) block and multiple virtual servers attached to read-only blocks. 
+- __Persistent disks__ (somewhere else in the network)
+  - Zonal: data replicated in one zone
+  - Regional: data replicated in multiple zones (high durability)
+- **Local SSD** (on the same host as the virtual machine)
+
+
