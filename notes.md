@@ -575,13 +575,29 @@ Data it is not stored in raw format so data in databases, hard disk, file server
 
 There are two types of storage that can be attached to a virtual machine in GCP:
 
-**File Storage**: Allows multiple virtual servers attached to a file storage,
-- __Filestore__  It allows high performance storage.
+### File Storage
 
-**Block Storage**: Allows only one virtual server attached to a (writing) block and multiple virtual servers attached to read-only blocks. 
-- __Persistent disks__ (somewhere else in the network)
+Allows multiple virtual servers attached to a file storage,
+- __Filestore__  It allows high performance storage. (needs to be attached via SSH)
+
+### Block Storage 
+
+Allows only one virtual server attached to a (writing) block and multiple virtual servers attached to read-only blocks. 
+
+- __Persistent disks__ (somewhere else in the network) 
+Very flexible, the performance scales with size, the lifecycle is independent from VM.
   - Zonal: data replicated in one zone
-  - Regional: data replicated in multiple zones (high durability)
-- **Local SSD** (on the same host as the virtual machine)
+  - Regional: data replicated in multiple zones (high durability) but the cost can be the double of zonal.
 
+- **Local SSD** (on the same host as the virtual machine) 
+Provides high IOPS and low latency but data only persist until instance is running. Data is encrypted  but only some machine types support this feature and it is physically attached to a VM instance.
 
+### Comparison 
+
+| Feature | PD | L SSDs |
+| :------- |  :-------| :---- |
+| Attachment to VM Instance | Network drive | Physically attached|
+| Lifecycle| Independent to VM | Tied to VM|
+|I/O speed| Lower due to network| 10-100x faster|
+|Snapshots|Supported| Not supported|
+|Use case| Permanent storage| Ephemeral storage|
