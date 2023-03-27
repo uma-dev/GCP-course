@@ -586,7 +586,7 @@ Allows only one virtual server attached to a (writing) block and multiple virtua
 
 - __Persistent disks__ (somewhere else in the network) 
 Very flexible, the performance scales with size, the lifecycle is independent from VM. 
-It allows snapshots (__incremental__ because they save changes between them) and configure a schedule no more often than 1 hour. It is recommended to delete unnecessary snapshots because you don't lose data. 
+It allows snapshots (__incremental__ because they save changes between them) and configure a snapshot schedule no more often than 1 hour. It is recommended to delete unnecessary snapshots because you don't lose data, you can do it by the snapshot schedule rule. 
   - Zonal: data replicated in one zone
   - Regional: data replicated in multiple zones (high durability) but the cost can be the double of zonal.
 
@@ -614,10 +614,6 @@ Provides high IOPS and low latency but data only persist until instance is runni
 |Cost|--| -+| ++ |
 |Use cases|big data | Balance between cost-performance| High performance|
 
-### Snapshots schedule 
-
-Allows you to schedule a snapshot and the auto-delete for older images. You need to edit a existing disk in order to attach to created snapshot schedule.
-
 ### Machine Images 
  
 Machine types != images
@@ -625,3 +621,14 @@ Machine types != images
 Remember that 
 - Images contain is created from boot persistent disk (contains OS)
 - Machine images is created from a Machine instances (configuration, metadata, permissions and data from one or more disk)
+
+### Comparison of backups options
+
+| Scenarios | Machine Image | Persistent Disk Snapshot | Custom Image | Instance template |
+| :------- |  :-------| :---- | :------ | :------|
+|Single disk backup|yes|yes|yes|no|
+|Multiple disk backup|yes|no |no|no|
+|Differential backup|yes|yes|no|no|
+|Instance cloning and replication|yes|no|yes|yes|
+|VM instance configuration|yes|no|no|yes|
+
