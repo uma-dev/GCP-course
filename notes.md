@@ -709,3 +709,24 @@ Are made to optimize the cost based on your access needs. It is designed for dur
 - Coldline storage (99.9% / 99.0%): Minimum storage duration of 90 days and used for read or modify
 at most once a quarter
 - Archive storage (99.9% / 99.0%): Used less than once a year
+
+### Types of uploading and downloading
+
+**Download**
+
+| Scenario | Option|
+| :------- | :------|
+| Small files that can be reuploaded in case of failures and **no** object metadata| Simple upload|
+| Small files that can be reuploaded in case of failures and object metadata|Multipart Upload|
+|Larger files and RECOMMENDED for most use cases | Resumable upload|
+|Objects of unknown size| Stream transfers|
+|Fast uploads when network and disk speed are not a limitation (file divided in 32 chunks uploaded in parallel) | Parallel composite uploads|
+
+
+**Upload**
+
+| Scenario | Option|
+| :------- | :------|
+|Downloading objects to a destination| Simple download|
+|Downloading to a process|Streaming Download| 
+|Slice and download large objects| Sliced object download|
