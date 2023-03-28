@@ -676,3 +676,18 @@ To take snapshot
 | Global | Regional | Zonal |
 | :------- |  :-------| :------|
 | Images, Snapshots and Instance templates (not applicable for zonal resources) | Persistent disk, Regional managed instance groups| Persistent disk, Instances and Zonal managed instance groups|
+
+## Cloud storage
+
+Most popular, serverless and inexpensive storage service. It provides very useful features like:
+
+- Autoscaling and infinite scale
+- Treat entire object as a unit
+- Also called  **Object Storage**
+- Provides REST API to access and modify objects
+- Provides CLI and Client Libraries for various languages
+- Store all file types
+
+### Buckets
+
+Needs a globally unique name. It can be multi-region, dual-region or single region. 
