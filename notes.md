@@ -787,3 +787,21 @@ __Tip and trick__. To change storage class of and existing bucket you have to:
 - Set IAM access / role  ```gsutil iam ch MBR_TYPE:MBR_NAME:IAM_ROLE gs://BKT_NAME```
 - Signed URL for temporary access   to somebody (10 minutes) ```gsutil signurl -d 10m YOUR_KEY gs:/BUCKET_NAME/OBJECT_PATH```
 
+
+## Google IAM 
+
+Provides the service for **authentication** (is the right user) and **authorization** (is the right access) for the identities to access the resources. 
+
+An Identity can be: 
+- A GCP user 
+- A group of GCP users
+- An application running in GCP
+- An application running in your data center
+- Unauthenticated users (can be external users)
+
+Some concepts:
+
+- Roles: set of permissions to perform a specific actions on specific resources. __The roles don't know about members like they do in AWS__. Some types of roles are: 
+  - Basic roles (viewer, editor[viewer + edit actions], owner [editor + manage roles and permissions + billing]) **not recommended for production**
+  - Predefined roles (storage admin, storage object admin, storage object viewer, storage object creator)
+- Policy: Allows to bind a role to a member 
