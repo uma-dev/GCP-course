@@ -778,5 +778,12 @@ __Tip and trick__. To change storage class of and existing bucket you have to:
 - Make bucket (mb) ```gsutil mb gs://BKT_NAME```
 - List everything inside a bucket ```gsutil ls -a gs://BKT_NAME```
 - Copy buckets ```gsutil cp gs://SRC_BKT/SRC_OBJ gs://DESTN_BKT/NAME_COPY```
+  - Upload  ```gsutil cp LOCAL_LOCATION gs://DESTN_BKT_NAME```
+  - Download ```gsutil cp  gs://BKT_NAME/OBJ_PATH LOCAL_LOCATION```
 - Move or rename objects of bucket ```gsutil mv gs://BKT_NAME/OLD_OBJ_NAME gs://BKT_NAME/NEW_OBJ_NAME```
 - Rewrite / change storage class for objects ```gsutil rewrite -s STORAGE_CLASS gs://BKT_NAME/OBJ_PATH gs://BKT_NAME/```
+- Versioning  ```gsutil versioning set on/off gs:BKT_NAME```
+- Set access permissions ```gsutil acl ch```
+- Set IAM access / role  ```gsutil iam ch MBR_TYPE:MBR_NAME:IAM_ROLE gs://BKT_NAME```
+- Signed URL for temporary access   to somebody (10 minutes) ```gsutil signurl -d 10m YOUR_KEY gs:/BUCKET_NAME/OBJECT_PATH```
+
