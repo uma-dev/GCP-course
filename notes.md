@@ -679,15 +679,23 @@ To take snapshot
 
 ## Cloud storage
 
-Most popular, serverless and inexpensive storage service. It provides very useful features like:
+Most popular, serverless and inexpensive multipurpose storage service. It provides very useful features like:
 
 - Autoscaling and infinite scale
 - Treat entire object as a unit
 - Also called  **Object Storage**
 - Provides REST API to access and modify objects
 - Provides CLI and Client Libraries for various languages
-- Store all file types
+- Store all file types (text, binary, backup and archives)
+- Backups of databases
+-Staging data during  on-premise to cloud database migration
 
 ### Buckets
 
-Needs a globally unique name. It can be multi-region, dual-region or single region. 
+Objects are stored as buckets. They need a globally unique name and it can't start with __goog__ prefix or contain __google__. 
+It can be multi-region, dual-region or single region. Some other features are:
+
+- Each bucket is associated with a project
+- Each object has an unique ID
+- Max object size in 5 TB
+- There is no limit for the number of  objects
