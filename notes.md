@@ -730,3 +730,33 @@ at most once a quarter
 |Downloading objects to a destination| Simple download|
 |Downloading to a process|Streaming Download| 
 |Slice and download large objects| Sliced object download|
+
+### Object versioning
+
+It is used to prevent accidental deletion and provides history.
+
+- Enabled at bucket level
+- Can be turned off/on anytime
+- Live version is the latest version
+- Older versions are identified by object key (live version) + generation number (older version)
+- To keep cost low you can delete older versions of objects, for example older than 15 days
+
+### Object Lifecycle Management
+
+When you identify the conditions for using objects based on:
+- Age 
+- IsLive 
+- CreatedBefore
+- NumberOfNewerVersions
+- Combinations of conditions
+
+There are two kinds of actions
+- SetStorageClass (change from one class to another)
+- Deletion (delete objects)
+
+____
+
+Restrictions (more usage to less):
+- [Standard, Multi-regional or Regional] to [Nearline or Coldline or Archive]
+- [Nearline] to [Coldline or Archive]
+- [Coldline] to [Archive]
