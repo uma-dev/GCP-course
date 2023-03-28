@@ -760,3 +760,12 @@ Restrictions (more usage to less):
 - [Standard, Multi-regional or Regional] to [Nearline or Coldline or Archive]
 - [Nearline] to [Coldline or Archive]
 - [Coldline] to [Archive]
+
+______
+
+### Cloud Storage - Encryption
+
+- Data is encrypted on the server side. 
+- You can configure to use the default (Google Managed encryption key) or change it to use (Customer Managed encryption key using KMS)
+- Optionally you can encrypt on the client side 
+
