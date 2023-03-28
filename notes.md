@@ -699,3 +699,13 @@ It can be multi-region, dual-region or single region. Some other features are:
 - Each object has an unique ID
 - Max object size in 5 TB
 - There is no limit for the number of  objects
+
+### Storage Classes
+
+Are made to optimize the cost based on your access needs. It is designed for durability of 11 9's (99.9999999%) and all of them provides low-latency. Here are the classes and their typical availability in multi-region / dual-region and single-region.
+
+- Standard (99.99% / 99.99%): Frequently used data in a short period of time.
+- Nearline Storage (99.95% / 99.99%): Minimum storage duration of 30 days and used for read or modify once a month on average.
+- Coldline storage (99.95% / 99.99%): Minimum storage duration of 90 days and used for read or modify
+at most once a quarter
+- Archive storage (99.95% / 99.99%): Used less than once a year
