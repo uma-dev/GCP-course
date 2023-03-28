@@ -769,3 +769,14 @@ ______
 - You can configure to use the default (Google Managed encryption key) or change it to use (Customer Managed encryption key using KMS)
 - Optionally you can encrypt on the client side 
 
+__Tip and trick__. To change storage class of and existing bucket you have to:
+- Change the default class of bucket
+- Update the class of the objects in the bucket
+
+### Commands (gsutil)
+
+- Make bucket (mb) ```gsutil mb gs://BKT_NAME```
+- List everything inside a bucket ```gsutil ls -a gs://BKT_NAME```
+- Copy buckets ```gsutil cp gs://SRC_BKT/SRC_OBJ gs://DESTN_BKT/NAME_COPY```
+- Move or rename objects of bucket ```gsutil mv gs://BKT_NAME/OLD_OBJ_NAME gs://BKT_NAME/NEW_OBJ_NAME```
+- Rewrite / change storage class for objects ```gsutil rewrite -s STORAGE_CLASS gs://BKT_NAME/OBJ_PATH gs://BKT_NAME/```
