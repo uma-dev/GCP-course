@@ -699,6 +699,10 @@ It can be multi-region, dual-region or single region. Some other features are:
 - Each object has an unique ID
 - Max object size in 5 TB
 - There is no limit for the number of  objects
+- To __create a static website__ using buckets follow:
+  - Create a bucket with the same name as a website name (you have to own the domain)
+  - Copy files to the bucket (including index and error files)
+  - Add member **allUsers** and grant the Storage Object Viewer option
 
 ### Storage Classes
 
