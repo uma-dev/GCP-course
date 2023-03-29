@@ -827,10 +827,25 @@ Some concepts:
 - Describe an IAM role ```gcloud iam roles describe roles/ROLE```
 - Create your own roles ```gcloud iam roles create --project PROJECT --permissions PERMISSIONS --stage STAGE```
 - Copy roles ```gcloud iam roles copy --source=roles/ROLE --destination=my.custom.role --dest-project=PROJECT```
+- Create a Service Account User Managed Key ```gcloud iam service-accounts keys create```
 
 ### Service Account
 
-Is an identified email address. Are very useful when you don't want to use personal credentials to allow access. They can be either: 
+Is an identified email address. It is both an Identity and a Resource. They are very useful when you don't want to use personal credentials to allow access.  They can be either: 
 - Default service accounts (Automatically created when some services are used) NOT RECOMMENDED
 - User managed (fine grained access control and conditions) RECOMMENDED
 - Google-managed service accounts (Created and managed by Google) They are used by GCP to perform operations on user's behalf, we don't generally worry about them.
+
+Beware that the process of providing access is different if the application is on premise or if is hosted in GCP.
+
+### Access Control List (ACL)
+
+Defines who can access to a bucket and objects and the level of the access. It is different from IAM  because ACL is more granular and instead of granting access to all objects in a bucket, it can customize the specific access to different objects.  It can be: 
+- Uniform (using IAM) RECOMMENDED
+- Fine grained (using IAM + ACL)
+
+### Signed URL 
+
+Useful to allow a user **limited time** access, users don't require Google accounts. The steps to create a signed URL are: 
+- Create a key for the service account/ user with the desired permissions. 
+- Create  a signed URL with the key and gsutil ```gsutil signurl -d 10m YOUR_KEY gs://BUCKET_NAME/OBJECT_PATH```
