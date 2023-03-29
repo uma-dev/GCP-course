@@ -800,7 +800,7 @@ An Identity can be:
 - Unauthenticated users (can be external users)
 
 Some concepts:
-- Member: The one who needs the permissions, it can be a:
+- Member: The one who needs the permissions, is also called principal or identity. It can be a:
   - User
   - Service Account
   - Group
@@ -810,3 +810,20 @@ Some concepts:
   - **Predefined** roles (storage admin, storage object admin, storage object viewer, storage object creator)
   - **Custom** roles: are used when predefined roles are not sufficient
 - Policy: Allows to bind a or more roles to members
+
+** In Google IAM there is a section called "Policy Troubleshooter" to check/troubleshoot the resources and permissions assigned.
+
+### Commands
+
+- Describe the current project ```gcloud compute project-info describe```
+- Access the Cloud Platform with Google user credentials ```gcloud auth login```
+- Revoke access credentials for an account ```gcloud auth revoke```
+- List active accounts ```gcloud auth list```
+- To get the current project's policy ```gcloud projects get-iam-policy```
+- Add binding  ```gcloud projects add-iam-policy-binding PROJECT --member=user:USER --role=roles/ROLE```
+- Remove binding  ```gcloud projects remove-iam-policy-binding PROJECT --member=user:USER --role=roles/ROLE```
+- Set binding  ```gcloud projects set-iam-policy-binding PROJECT```
+- Delete a project with  ```gcloud projects delete PROJECT```
+- Describe an IAM role ```gcloud iam roles describe roles/ROLE```
+- Create your own roles ```gcloud iam roles create --project PROJECT --permissions PERMISSIONS --stage STAGE```
+- Copy roles ```gcloud iam roles copy --source=roles/ROLE --destination=my.custom.role --dest-project=PROJECT```
