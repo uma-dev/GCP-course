@@ -853,3 +853,12 @@ Defines who can access to a bucket and objects and the level of the access. It i
 Useful to allow a user **limited time** access, users don't require Google accounts. The steps to create a signed URL are: 
 - Create a key for the service account/ user with the desired permissions. 
 - Create  a signed URL with the key and gsutil ```gsutil signurl -d 10m YOUR_KEY gs://BUCKET_NAME/OBJECT_PATH```
+
+## Databases 
+
+- **Availability** [downtime of an app]: commonly 9 nines  (typically online apps aim  this availability). 
+  - A common way to improve availability in databases is by using standby databases (synchronous replication) in multiple zones or multiple regions. 
+
+- **Durability** [percentage of data losed]: commonly 11 nines, it is really high because once data is lost, there is no way to get it back.
+  - A common way to improve durability is storing multiple copies of data, but this bring some challenges. 
+
