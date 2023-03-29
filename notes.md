@@ -800,8 +800,13 @@ An Identity can be:
 - Unauthenticated users (can be external users)
 
 Some concepts:
-
+- Member: The one who needs the permissions, it can be a:
+  - User
+  - Service Account
+  - Group
+  - Domain
 - Roles: set of permissions to perform a specific actions on specific resources. __The roles don't know about members like they do in AWS__. Some types of roles are: 
-  - Basic roles (viewer, editor[viewer + edit actions], owner [editor + manage roles and permissions + billing]) **not recommended for production**
-  - Predefined roles (storage admin, storage object admin, storage object viewer, storage object creator)
-- Policy: Allows to bind a role to a member 
+  - **Basic** roles (viewer, editor[viewer + edit actions], owner [editor + manage roles and permissions + billing]) **not recommended for production**
+  - **Predefined** roles (storage admin, storage object admin, storage object viewer, storage object creator)
+  - **Custom** roles: are used when predefined roles are not sufficient
+- Policy: Allows to bind a or more roles to members
