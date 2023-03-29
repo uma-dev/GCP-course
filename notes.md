@@ -827,3 +827,10 @@ Some concepts:
 - Describe an IAM role ```gcloud iam roles describe roles/ROLE```
 - Create your own roles ```gcloud iam roles create --project PROJECT --permissions PERMISSIONS --stage STAGE```
 - Copy roles ```gcloud iam roles copy --source=roles/ROLE --destination=my.custom.role --dest-project=PROJECT```
+
+### Service Account
+
+Is an identified email address. Are very useful when you don't want to use personal credentials to allow access. They can be either: 
+- Default service accounts (Automatically created when some services are used) NOT RECOMMENDED
+- User managed (fine grained access control and conditions) RECOMMENDED
+- Google-managed service accounts (Created and managed by Google) They are used by GCP to perform operations on user's behalf, we don't generally worry about them.
