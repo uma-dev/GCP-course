@@ -477,7 +477,7 @@ Is useful when you want to execute some code when an event happens / is triggere
 - Cloud Pub/Sub
 - HTTP POST/GET/DELETE/PUT/OPTIONS
 - Firebase
-- Cloud Firestore
+- Cloud Firestore (NoSQL)
 - Stack driver logging
 
 Another key features are:
@@ -895,9 +895,25 @@ Increase database performance
 
 ### Choosing a database 
 Some of the factors to choose a database are: 
-- Fixed schema?
+- Fixed schema or schemaless?
 - Transaction properties that you need (atomicity and consistency)
 - Latency required (seconds, milliseconds or microseconds)
 - Number of transactions per second expected (hundreds of thousands or millions)
 - Data that will be stored (Mbs or GBs or TBs or PBs)
 - etc 
+
+### Databases categories
+
+- **Relational** (most popular) It has tables and relations between them. Used for:  
+  - __OLTP__ (row storage): applications where large number of users make large number of small transactions. MySQL, Oracle, SQL server, etc. In __Google Managed services__ Cloud SQL supports PostgreSQL, MySQL and SQL server for regional relational databases. Cloud Spanner is intended for global applications with horizontal databases.
+    - Cloud SQL
+  - __OLAP__ (columnar storage - high compression): applications that allows users to analyze petabytes of data like Reporting applications, data ware houses, business intelligence applications and Analytics systems. In __GCP managed service__ the recommended service is BigQuery. 
+    - BigQuery
+- **NoSQL** (scalability and high performance) Flexible schema, structure data the way your application needs it. The schema can evolve with time. The __GCP managed service__ is Cloud Firestore and Cloud BigTable. 
+  - Cloud Firestore/Datastore: **Serverless**. Is the next version of Datastore, ___designed for transactional__ mobile and web applications, and it has strong consistency and mobile and Web client libraries, recommended for a maximum of few Terabytes 
+  - Cloud BigTable: **Not serverless** needs instances, wide column database, recommended for data size > 10 Terabytes to several Petabytes. __Not recommended for transactional__ workloads.
+- Document
+- Key value
+- Graph
+- In Memory
+
