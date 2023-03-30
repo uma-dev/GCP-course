@@ -905,18 +905,31 @@ Some of the factors to choose a database are:
 ### Databases categories
 
 - **Relational** (most popular) It has tables and relations between them. Used for:  
-  - __OLTP__ (row storage): applications where large number of users make large number of small transactions. MySQL, Oracle, SQL server, etc. In __Google Managed services__ Cloud SQL supports PostgreSQL, MySQL and SQL server for regional relational databases. Cloud Spanner is intended for global applications with horizontal databases.
+  - __OLTP__ (row storage): applications where large number of users make large number of small transactions. MySQL, Oracle, SQL server, etc. In __Google Managed services__ Cloud SQL supports PostgreSQL, MySQL and SQL server for regional relational databases. Cloud Spanner is intended for global applications with horizontal scaling.
     - Cloud SQL
+    - Cloud Spanner
   - __OLAP__ (columnar storage - high compression): applications that allows users to analyze petabytes of data like Reporting applications, data ware houses, business intelligence applications and Analytics systems. The __GCP managed service__ recommended is BigQuery. 
     - BigQuery
 - **NoSQL** (scalability and high performance) Flexible schema, structure data the way your application needs it. The schema can evolve with time. The __GCP managed service__ is Cloud Firestore and Cloud BigTable. 
   - Cloud Firestore/Datastore: **Serverless**. Is the next version of Datastore, ___designed for transactional__ mobile and web applications, and it has strong consistency and mobile and Web client libraries, recommended for a maximum of few Terabytes 
-  - Cloud BigTable: **Not serverless** needs instances, wide column database, recommended for data size > 10 Terabytes to several Petabytes. __Not recommended for transactional__ workloads.
+  - Cloud BigTable: **Not serverless** needs instances, wide column database, recommended for streaming (IOT) data size > 10 Terabytes to several Petabytes. __Not recommended for transactional__ workloads.
 
-- **In Memory databases** Faster databases than disk databases. The __GCP Managed Service__ recommended is Memory Store. 
+- **In Memory databases** Faster databases than disk databases, microseconds response. The __GCP Managed Service__ recommended is Memory Store. 
   - Memory Store
 
 - Document
 - Key value
 - Graph
 
+### Some scenarios 
+
+| Scenario | Solution |
+| :------- | :------|
+|A startup with quick evolving schema (table structure)| NoSQL-Firestore/Datastore |
+|Non relational db with less storage(10 GB)| NoSQL-Firestore/Datastore|
+|Transactional global database with predefined schema needing to process million of transactions per second| Global/Relational/OLTP-CloudSpammer|
+|Transactional  local database processing thousands of transactions per second|Local/OLTP-CloudSQL|
+|Cache data (from database) for a web application| Cache-Memory Store|
+|Database for analytics processing of petabytes of data| Analytics/OLAP-BigQuery|
+|Database for storing huge volumes stream data from IOT devices | Stream/NoSQL-Cloud Big Table|
+|Database for storing huge streams of time series (time stamp) data | Stream-Cloud Big Table|
