@@ -863,7 +863,12 @@ Useful to allow a user **limited time** access, users don't require Google accou
  
 **Durability** [percentage of data losed]: commonly 11 nines, it is really high because once data is lost, there is no way to get it back. It is commonly more important that availability. 
 
-- A common way to improve durability is storing multiple copies of data, but this bring some challenges. 
+- A common way to improve durability is storing multiple copies of data, but this bring some challenges like:
+
+  - Consistency 
+    - Strong consistency -> slow
+    - Eventual consistency -> lag of seconds between replicas
+    - Read-after-write consistency -> Inserts are immediate but updates have eventual consistency
 
 **Recovery Point Objective (RPO)**
 Maximum acceptable period of data loss
@@ -878,4 +883,21 @@ Some scenarios related to data loss and downtime are:
 |Very small data loss ( RPO -1 min) and Very small downtime (RTO -5 minutes)|  Hot standby| 
 |Very small data loss ( RPO -1 min) and admissible to downtime (RTO -15 minutes) | Warm standby|
 | Data is critical ( RPO -1 min) and downtime admissible in range of hours (RTO - few hours)| Snapshots  and transaction logs|
-|Data cab be lost| Failover a new server| 
+|Data can be lost| Failover a new server| 
+
+Increase database performance
+
+| Scenario | Solution |
+| :------- | :------|
+|Database performance is impacted by two applications reading data from one database| Vertically scale the database (increase CPU and memory)|
+|Database performance is impacted by two applications reading data from one database|Create a database cluster (Distribute the database) -> expensive setup|
+|Database performance is impacted by two applications reading data from one database|Create  read replicas (run read only applications against read replicas)|
+
+### Choosing a database 
+Some of the factors to choose a database are: 
+- Fixed schema?
+- Transaction properties that you need (atomicity and consistency)
+- Latency required (seconds, milliseconds or microseconds)
+- Number of transactions per second expected (hundreds of thousands or millions)
+- Data that will be stored (Mbs or GBs or TBs or PBs)
+- etc 
