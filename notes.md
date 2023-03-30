@@ -856,9 +856,26 @@ Useful to allow a user **limited time** access, users don't require Google accou
 
 ## Databases 
 
-- **Availability** [downtime of an app]: commonly 9 nines  (typically online apps aim  this availability). 
-  - A common way to improve availability in databases is by using standby databases (synchronous replication) in multiple zones or multiple regions. 
+### Technical measures 
 
-- **Durability** [percentage of data losed]: commonly 11 nines, it is really high because once data is lost, there is no way to get it back.
-  - A common way to improve durability is storing multiple copies of data, but this bring some challenges. 
+**Availability** [downtime of an app]: commonly 9 nines  (typically online apps aim  this availability). 
+- A common way to improve availability in databases is by using standby databases (synchronous replication) in multiple zones or multiple regions. 
+ 
+**Durability** [percentage of data losed]: commonly 11 nines, it is really high because once data is lost, there is no way to get it back. It is commonly more important that availability. 
 
+- A common way to improve durability is storing multiple copies of data, but this bring some challenges. 
+
+**Recovery Point Objective (RPO)**
+Maximum acceptable period of data loss
+
+**Recovery Time Objective (RTO)**
+Maximum acceptable downtime
+
+Some scenarios related to data loss and downtime are: 
+
+| Scenario | Solution |
+| :------- | :------|
+|Very small data loss ( RPO -1 min) and Very small downtime (RTO -5 minutes)|  Hot standby| 
+|Very small data loss ( RPO -1 min) and admissible to downtime (RTO -15 minutes) | Warm standby|
+| Data is critical ( RPO -1 min) and downtime admissible in range of hours (RTO - few hours)| Snapshots  and transaction logs|
+|Data cab be lost| Failover a new server| 
