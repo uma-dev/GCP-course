@@ -947,10 +947,36 @@ Configure your needs and do not worry about managing the database. Used for simp
 - Automatic storage increase without downtime
 - Schedule automatic backups
 - Migration and export of data
+- You first need to create an instance in order to use the service
+
+#### Cloud SQL high availability
+
+You have to choose a primary and secondary zones, then, you need to create two instances, the changes from the primary will be replicated on the secondary instance. One restriction is that you can not connect simultaneously to both instances, secondary instances is intended to work when primary fails. (failover)
 
 ### Cloud Spanner 
-It is a high cost alternative to Cloud SQL that allows:
+It is a high cost (pay per nodes and storage) alternative to Cloud SQL that allows:
+- Fully managed mission critical
+- Strong transactional consistency at global scale
+- Automatically scale to PBs of data
+- Scale horizontally (in reads and writes)
 - High availability (99.999%)
 - Working with huge volumes of relational data 
 - Infinite scaling for a growing application 
 - Global database
+- Data export through Cloud Console and Data  flow (no gcloud option)
+- You first need to create an instance in order to use the service
+
+### Cloud Datastore and Firestore
+
+#### Datastore
+Highly scalable NoSQL Document database that automatically scales and partitions data as it grows, its intended to work for use cases needing a __flexible schema with transactions__. It is recommended for up to a few TBs of data, supports: 
+- Transactions 
+- Indexes
+- SQL like queries (GQL language)
+
+But it doesn't support joins and you can only export data only from gcloud (not from cloud console ).
+
+### Firestore
+It is an enhanced version that will replace Datastore is **Firestore**. It is optimized for __multiple devices access__ (mobile, IOT, etc). Also it offers client side libraries Web, iOS, Android and more. It offers two modes: 
+- Datastore compatible
+- Native modes
