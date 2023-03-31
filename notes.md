@@ -939,7 +939,14 @@ Configure your needs and do not worry about managing the database. Used for simp
 - MySQL, PostgreSQL and SQL Server
 - Regional (multiple zones) service with high availability (99.95%)
 - HDDs and SSDs
+- Automatic encryption (tables and backups), maintenance and updates
+- Automated backups 
+- High availability and failover 
 - Up to 416 GB RAM and 30 TB data storage
+- Allows you to create read replicas in the same region or different region or external (non Cloud SQL db)
+- Automatic storage increase without downtime
+- Schedule automatic backups
+- Migration and export of data
 
 ### Cloud Spanner 
 It is a high cost alternative to Cloud SQL that allows:
