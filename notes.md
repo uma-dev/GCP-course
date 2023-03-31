@@ -911,7 +911,7 @@ Some of the factors to choose a database are:
   - __OLAP__ (columnar storage - high compression): applications that allows users to analyze petabytes of data like Reporting applications, data ware houses, business intelligence applications and Analytics systems. The __GCP managed service__ recommended is BigQuery. 
     - BigQuery
 - **NoSQL** (scalability and high performance) Flexible schema, structure data the way your application needs it. The schema can evolve with time. The __GCP managed service__ is Cloud Firestore and Cloud BigTable. 
-  - Cloud Firestore/Datastore: **Serverless**. Is the next version of Datastore, ___designed for transactional__ mobile and web applications, and it has strong consistency and mobile and Web client libraries, recommended for a maximum of few Terabytes 
+  - Cloud Firestore/Datastore: **Serverless**. Is the next version of Datastore, __designed for transactional__ mobile and web applications, and it has strong consistency and mobile and Web client libraries, recommended for a maximum of few Terabytes 
   - Cloud BigTable: **Not serverless** needs instances, wide column database, recommended for streaming (IOT) data size > 10 Terabytes to several Petabytes. __Not recommended for transactional__ workloads.
 
 - **In Memory databases** Faster databases than disk databases, microseconds response. The __GCP Managed Service__ recommended is Memory Store. 
@@ -933,3 +933,17 @@ Some of the factors to choose a database are:
 |Database for analytics processing of petabytes of data| Analytics/OLAP-BigQuery|
 |Database for storing huge volumes stream data from IOT devices | Stream/NoSQL-Cloud Big Table|
 |Database for storing huge streams of time series (time stamp) data | Stream-Cloud Big Table|
+
+### Cloud SQL 
+Configure your needs and do not worry about managing the database. Used for simple relational use cases. It it cheaper than Cloud Spanner. It supports: 
+- MySQL, PostgreSQL and SQL Server
+- Regional (multiple zones) service with high availability (99.95%)
+- HDDs and SSDs
+- Up to 416 GB RAM and 30 TB data storage
+
+### Cloud Spanner 
+It is a high cost alternative to Cloud SQL that allows:
+- High availability (99.999%)
+- Working with huge volumes of relational data 
+- Infinite scaling for a growing application 
+- Global database
