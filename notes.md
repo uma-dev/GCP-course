@@ -1071,3 +1071,8 @@ Datastore backups, etc) and exporting (Cloud Storage and Data Studio, formats: C
 Whenever you import or export databases, and you are using Cloud Storage Buckets, you need to give the access to the bucket:
 - Using ACL with the ```gsutil``` command
 - Giving the role 
+
+### Remember
+
+- BigQuery, Datastore, firebase does NOT need VM configuration
+- Cloud SQL and BigTable need VM configuration
