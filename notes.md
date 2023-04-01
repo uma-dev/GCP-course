@@ -1019,3 +1019,30 @@ Datastore backups, etc) and exporting (Cloud Storage and Data Studio, formats: C
   - HBase API based libraries (Java, .NET and Python)
 - A good practice is to estimate queries before running, either console or ```bq --dry-run``` (you pay for the amount of data scanned by the query)
 
+### Commands
+
+- Cloud SQL
+  - ```gcloud sql instances create/clone/delete/describe/patch```
+  - ```gcloud sql databases create/clone/delete/describe/patch```
+  - ```gcloud sql connect INSTANCE --database=DATABASE --user=root```
+  - ```gcloud sql backups create/describe/list --async --instance INSTANCE```
+- BigQuery
+  -  ```bq show biggquery-public-data:sample.shakespeare```
+  - ```bq query 'QUERY-STRING'```
+  - ```bq extract```
+  - ```bq load```
+  - ````gcloud config set project PROJECT``` for queries inside an specific project
+
+- Cloud BigTable
+  - ```gcloud components install cbt```
+  - ```cbt listinstances```
+  - Create .cbtrc file with the configuration 
+    - ```echo instance=quickstart-instance >> ~/.cbtrc``` 
+    - ```echo project=PROJECT >> ~/.cbtrc```
+  - ```cbt createinstance```
+  - ```cbt createcluster```
+  - ```cbt createtable```
+  - ```cbt deleteinstance```
+  - ```cbt ls (list tables and column families)```
+
+  
