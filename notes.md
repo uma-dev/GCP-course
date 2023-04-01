@@ -936,6 +936,10 @@ Some of the factors to choose a database are:
 
 ### Cloud SQL 
 
+You can import/export data from:j
+- Console/gcloud/REST API
+- Large databases use serverless mode
+
 Configure your needs and do not worry about managing the database. Used for simple relational use cases. It it cheaper than Cloud Spanner. It supports: 
 - MySQL, PostgreSQL and SQL Server
 - Regional (multiple zones) service with high availability (99.95%)
@@ -955,6 +959,8 @@ Configure your needs and do not worry about managing the database. Used for simp
 You have to choose a primary and secondary zones, then, you need to create two instances, the changes from the primary will be replicated on the secondary instance. One restriction is that you can not connect simultaneously to both instances, secondary instances is intended to work when primary fails. (failover)
 
 ### Cloud Spanner
+You can import and export data from:
+- Console
 
 It is a high cost (pay per nodes and storage) alternative to Cloud SQL that allows:
 - Fully managed mission critical
@@ -969,6 +975,10 @@ It is a high cost (pay per nodes and storage) alternative to Cloud SQL that allo
 - You first need to create an instance in order to use the service
 
 ### Cloud Datastore and Firestore
+You can import/export data from:
+- Console
+- Rest API
+- gcloud
 
 #### Datastore
 
@@ -989,6 +999,9 @@ It can export data to buckets and also import data from buckets
 
 ### Cloud BigTable
 
+Import and export information from:
+- Create Dataflows
+
 Petabyte scale with millisecond response, wide column noSQL database. It is HBase API compatible (open source alternative). Designed for huge volumes of analytical and operational data and real-time analytics such as time-series data, financial data, transaction histories or stock prices. Some of the important features that provides: 
 - Millions of read/writes TPS at very low-latency
 - Single row transactions (does not support multi row transactions)
@@ -1005,6 +1018,12 @@ In-memory datastore service to reduce access times. It is fully managed with hig
 - Memcached: pure caching
 
 ### BigQuery
+
+In the context of tons of data, import and export becomes very important, so you can use:
+- Console / bq
+- Cloud Storage
+- Batch loading with BigQuery Data Transfer Service
+- Dataflow (streaming pipeline)
 
 Exabyte scale modern Datawarehousing solution from GCP.  It provides Relational database (SQL, schema, consistency).  Data in organized in **datasets**, inside datasets there are multiple tables. It offers: 
 - Two approaches: __traditional__ (storage + compute) and __modern__ (realtime + serverless) 
@@ -1026,11 +1045,13 @@ Datastore backups, etc) and exporting (Cloud Storage and Data Studio, formats: C
   - ```gcloud sql databases create/clone/delete/describe/patch```
   - ```gcloud sql connect INSTANCE --database=DATABASE --user=root```
   - ```gcloud sql backups create/describe/list --async --instance INSTANCE```
+  - ```gcloud sql import```
+
 - BigQuery
   -  ```bq show biggquery-public-data:sample.shakespeare```
   - ```bq query 'QUERY-STRING'```
   - ```bq extract```
-  - ```bq load```
+  - ```bq load``` to import data
   - ````gcloud config set project PROJECT``` for queries inside an specific project
 
 - Cloud BigTable
@@ -1045,4 +1066,8 @@ Datastore backups, etc) and exporting (Cloud Storage and Data Studio, formats: C
   - ```cbt deleteinstance```
   - ```cbt ls (list tables and column families)```
 
-  
+### Important detail about import and export of databases
+
+Whenever you import or export databases, and you are using Cloud Storage Buckets, you need to give the access to the bucket:
+- Using ACL with the ```gsutil``` command
+- Giving the role 
