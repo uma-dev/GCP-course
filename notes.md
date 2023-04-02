@@ -1071,3 +1071,12 @@ Datastore backups, etc) and exporting (Cloud Storage and Data Studio, formats: C
 Whenever you import or export databases, and you are using Cloud Storage Buckets, you need to give the access to the bucket:
 - Using ACL with the ```gsutil``` command
 - Giving the role 
+
+## Asynchronous Communication
+
+It implies putting a topic between web server (publisher) and Logging service (subscriber). It is necessary because provides the following improvements over the traditional Logging service model such as: 
+- Availability ->  Even if Logging service is down, the publisher remains up
+- Scalability -> You can process more logs scaling the topic
+- Decoupling -> Apps (publishers) doesn't care who listen their logs.
+- Durability -> 
+
