@@ -1074,9 +1074,13 @@ Whenever you import or export databases, and you are using Cloud Storage Buckets
 
 ## Asynchronous Communication
 
-It implies putting a topic between web server (publisher) and Logging service (subscriber). It is necessary because provides the following improvements over the traditional Logging service model such as: 
+It is a form of communication that implies putting a Topic between web server (publisher) and Logging service (subscriber). It is necessary because provides the following improvements over the traditional Logging service model such as: 
 - Availability ->  Even if Logging service is down, the publisher remains up
 - Scalability -> You can process more logs scaling the topic
 - Decoupling -> Apps (publishers) doesn't care who listen their logs.
-- Durability -> 
+- Durability -> messages are not lost even if the Logging service (subscriber) is down 
+
+The __GCP managed service__ for  asynchronous messaging service, is **Pub/Sub**, the main features are:
+- Auto scale
+- Pay for use (low cost)
 
