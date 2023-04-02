@@ -876,7 +876,7 @@ Maximum acceptable period of data loss
 **Recovery Time Objective (RTO)**
 Maximum acceptable downtime
 
-Some **scenarios** related to data loss and downtime are: 
+Some ****scenarios**** related to data loss and downtime are: 
 
 | Scenario | Solution |
 | :------- | :------|
