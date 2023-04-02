@@ -1116,9 +1116,8 @@ It is a zonal messaging service optimized for low cost. It uses zonal storage.
 - Create a topic ```gcloud pubsub topics create TOPIC_NAME```
 - Create a subscription ```gcloud pubsub subscriptions create SUBSCRIPTION --topic=TOPIC```
   - ```--enable-message-ordering```
-  - ```ack-deadline```
-  - ```message-filter```
-  - ``` ```
+  - ```--ack-deadline```
+  - ```--message-filter```
 - Pull messages ```gcloud pubsub subscriptions pull SUBSCRIPTION```
   - To acknowledge the message you can ```--auto-ack```
   - Specify the number of messages with ```--limit```
