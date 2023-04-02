@@ -1084,3 +1084,17 @@ The __GCP managed service__ for  asynchronous messaging service, is **Pub/Sub**,
 - Auto scale
 - Pay for use (low cost)
 
+The main use cases are: 
+- Event ingestion and delivery for streaming analytics pipelines.
+
+Supports push and pull message deliveries. The main parts of Pub/Sub are:
+
+- Publisher: Who sends a message by HTTP requests
+- Subscriber: Who receives a message. It consist of two parts: 
+  - Pulls a message whenever it is ready by a HTTP request
+  - Push is the process when messages are sent to subscribers
+
+The relationship between pb and sb can be:
+- one to many 
+- many to one
+- many to many
