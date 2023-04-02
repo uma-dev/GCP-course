@@ -1090,7 +1090,7 @@ The main use cases are:
 Supports push and pull message deliveries. The main parts of Pub/Sub are:
 
 - Publisher: Who sends a message by HTTP requests
-- Subscriber: Who receives a message. It consist of two parts: 
+- Subscriber: Who receives a message (and send an acknowledge). Messages are sent to subscribers, if there are multiple subscribers, each one process messages __individually__. The message can be received through: 
   - Pulls a message whenever it is ready by a HTTP request
   - Push is the process when messages are sent to subscribers
 
@@ -1098,3 +1098,10 @@ The relationship between pb and sb can be:
 - one to many 
 - many to one
 - many to many
+
+The process of sending or receiving a message is: 
+- Create a topic
+- Create subscriptions 
+
+### Commands
+
