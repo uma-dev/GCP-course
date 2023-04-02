@@ -1080,6 +1080,8 @@ It is a form of communication that implies putting a Topic between web server (p
 - Decoupling -> Apps (publishers) doesn't care who listen their logs.
 - Durability -> messages are not lost even if the Logging service (subscriber) is down 
 
+### Pub/Sub
+
 The __GCP managed service__ for  asynchronous messaging service, is **Pub/Sub**, the main features are:
 - Auto scale
 - Pay for use (low cost)
@@ -1103,5 +1105,24 @@ The process of sending or receiving a message is:
 - Create a topic
 - Create subscriptions 
 
+Remember that subscriptions supports snapshots.
+
+### Pub/Sub Lite
+
+It is a zonal messaging service optimized for low cost. It uses zonal storage. 
+
 ### Commands
 
+- Create a topic ```gcloud pubsub topics create TOPIC_NAME```
+- Create a subscription ```gcloud pubsub subscriptions create SUBSCRIPTION --topic=TOPIC```
+  - ```--enable-message-ordering```
+  - ```ack-deadline```
+  - ```message-filter```
+  - ``` ```
+- Pull messages ```gcloud pubsub subscriptions pull SUBSCRIPTION```
+  - To acknowledge the message you can ```--auto-ack```
+  - Specify the number of messages with ```--limit```
+- Publish a message  ```gcloud pubsub topics publish topic-from-gcloud --message="MESSAGE"```
+- List/delete topics with ```gcloud pubsub topics list/delete```
+- Delete topics with ```gcloud pubsub topics delete TOPIC```
+- List subscriptions with  ```gcloud pubsub topics list-subscriptions TOPIC```
