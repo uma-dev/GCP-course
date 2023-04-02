@@ -477,7 +477,7 @@ Is useful when you want to execute some code when an event happens / is triggere
 - Cloud Pub/Sub
 - HTTP POST/GET/DELETE/PUT/OPTIONS
 - Firebase
-- Cloud Firestore
+- Cloud Firestore (NoSQL)
 - Stack driver logging
 
 Another key features are:
@@ -863,7 +863,12 @@ Useful to allow a user **limited time** access, users don't require Google accou
  
 **Durability** [percentage of data losed]: commonly 11 nines, it is really high because once data is lost, there is no way to get it back. It is commonly more important that availability. 
 
-- A common way to improve durability is storing multiple copies of data, but this bring some challenges. 
+- A common way to improve durability is storing multiple copies of data, but this bring some challenges like:
+
+  - Consistency 
+    - Strong consistency -> slow
+    - Eventual consistency -> lag of seconds between replicas
+    - Read-after-write consistency -> Inserts are immediate but updates have eventual consistency
 
 **Recovery Point Objective (RPO)**
 Maximum acceptable period of data loss
@@ -878,4 +883,4 @@ Some **scenarios** related to data loss and downtime are:
 |Very small data loss ( RPO -1 min) and Very small downtime (RTO -5 minutes)|  Hot standby| 
 |Very small data loss ( RPO -1 min) and admissible to downtime (RTO -15 minutes) | Warm standby|
 | Data is critical ( RPO -1 min) and downtime admissible in range of hours (RTO - few hours)| Snapshots  and transaction logs|
-|Data can be lost| Failover a new server| 
+|Data cab be lost| Failover a new server| 
