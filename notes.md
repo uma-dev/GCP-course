@@ -1118,7 +1118,6 @@ It is a zonal messaging service optimized for low cost. It uses zonal storage.
   - ```--enable-message-ordering```
   - ```ack-deadline```
   - ```message-filter```
-  - ``` ```
 - Pull messages ```gcloud pubsub subscriptions pull SUBSCRIPTION```
   - To acknowledge the message you can ```--auto-ack```
   - Specify the number of messages with ```--limit```
