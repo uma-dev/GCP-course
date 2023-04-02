@@ -871,11 +871,11 @@ Maximum acceptable period of data loss
 **Recovery Time Objective (RTO)**
 Maximum acceptable downtime
 
-Some scenarios related to data loss and downtime are: 
+Some **scenarios** related to data loss and downtime are: 
 
 | Scenario | Solution |
 | :------- | :------|
 |Very small data loss ( RPO -1 min) and Very small downtime (RTO -5 minutes)|  Hot standby| 
 |Very small data loss ( RPO -1 min) and admissible to downtime (RTO -15 minutes) | Warm standby|
 | Data is critical ( RPO -1 min) and downtime admissible in range of hours (RTO - few hours)| Snapshots  and transaction logs|
-|Data cab be lost| Failover a new server| 
+|Data can be lost| Failover a new server| 
