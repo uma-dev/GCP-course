@@ -1197,3 +1197,24 @@ Is another alternative to connect on-premise network with GCP network (hybrid cl
 
 Is not a GCP service, is lower lever connection who establish a direct path from on-premises network to Google services (network peering). 
 It is not typically recommended. 
+
+## Cloud Operations
+
+### Cloud monitoring
+
+Works for GCP projects and AWS projects, in order to group all the information from multiple GCP projects you need to create a workspace on the host project and then add other GCP or AWS projects to the workspace.
+
+What you should know: 
+- Are users having any issue?
+- Does db has enough space?
+- Are servers running in optimal capacity?
+
+Tools that provide: 
+- Measures key aspects of services (metrics). The default metrics are:
+  - CPU utilization
+  - Disk traffic metrics
+  - Network traffic
+  - Uptime information
+  - For more metrics you can install Cloud monitoring agent on a VM
+- Create visualizations (Graphs and Dashboard)
+- Configure alerts when metrics aren't healthy
