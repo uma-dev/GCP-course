@@ -1218,3 +1218,17 @@ Tools that provide:
   - For more metrics you can install Cloud monitoring agent on a VM
 - Create visualizations (Graphs and Dashboard)
 - Configure alerts when metrics aren't healthy
+
+### Cloud Logging
+
+ Log management and analysis tool. Allows to store search and  analyze ans alert on massive volume of data. Some of the key features are: 
+ - Logs Explorer 
+ - Logs Dashboard  
+ - Logs Metrics 
+ - Logs  Router
+
+Is worth mentioning that most of GCP managed services automatically send logs to Cloud Logging. 
+
+In order to get logs from Google Compute Engine VMs, you have to install **Logging agent** (based on fluentd).
+
+If you want logs from on-premises, you can use BindPlane tool from Blue Medora or the cloud Logging API.
