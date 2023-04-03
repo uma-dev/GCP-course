@@ -1125,3 +1125,25 @@ It is a zonal messaging service optimized for low cost. It uses zonal storage.
 - List/delete topics with ```gcloud pubsub topics list/delete```
 - Delete topics with ```gcloud pubsub topics delete TOPIC```
 - List subscriptions with  ```gcloud pubsub topics list-subscriptions TOPIC```
+
+## Google Cloud VPC
+
+VPC is a service to help separate public resources (accessible from internet) from private resources (a database for example) inside GCP.
+
+Since your data and applications are outside a corporate network, surges the need for a private network/cloud isolated from the outside, so your network traffic is not visible from all other Cloud VPC. Unlike AWS (regional), Google VPC is a **global** resource. 
+
+Besides, you can create subnets, which are a **regional** resource. In general you want to create different VPC subnets for different access types resources.
+
+Until now, the VPC used in the above sections was the default, but you can create your own VPC with the following options: 
+
+- Auto mode (also used in default VPC): subnets automatically created in each region
+- Custom mode: Complete control over subnet and IP ranges. Its RECOMMENDED for production. The following options have to be enabled:
+  - Private Google Access -> Communication through private IP
+  - FlowLogs -> To troubleshoot network issues
+
+### CIDR (Classless )
+
+The continuous resources in a network makes routing easy. CIDR blocks express a range of addresses, consist of a starting IP address and a range which indicates the number of fixed bits in that address. Each address consist in (IPv4) 4 groups of 8 bits (32 bits), so 69.208.0.0/28 means that only 32 - 28 = 4 bits are free which means 2^4=16  possible combinations or addresses and 69.208.0.0 means the initial IP address, so the range expressed is from 69.208.0.0 to 69.208.0.15  
+Remember: 
+- 0.0.0.0/0 Represents all the range of IPv4 addresses
+- 0.0.0.0/32 Represents one address. 
