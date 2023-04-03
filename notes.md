@@ -1132,7 +1132,7 @@ VPC is a service to help separate public resources (accessible from internet) fr
 
 Since your data and applications are outside a corporate network, surges the need for a private network/cloud isolated from the outside, so your network traffic is not visible from all other Cloud VPC. Unlike AWS (regional), Google VPC is a **global** resource. 
 
-Besides, you can create subnets, which are a **regional** resource. In general you want to create different VPC subnets for different access types resources.
+Besides, you can create subnets, which are a **regional** resource. In general you want to create different VPC subnets for different access types resources, also you can connect subnets with VPC network peering.
 
 Until now, the VPC used in the above sections was the default, but you can create your own VPC with the following options: 
 
@@ -1147,3 +1147,53 @@ The continuous resources in a network makes routing easy. CIDR blocks express a 
 Remember: 
 - 0.0.0.0/0 Represents all the range of IPv4 addresses
 - 0.0.0.0/32 Represents one address. 
+
+### Firewall rules
+
+Useful to control the traffic going in or out of the network. Eac of the rules have a priority, represented with a number between 0-65535, where 0 is the highest priority.
+
+The default rule with the lowest priority (65535) allows all egress and denies all ingress of traffic, this rule cannot be deleted but you can override it with the remaining rules. 
+
+The default VPC has 4 rules with priority of 65534: 
+- Allow incoming traffic from VM instances in same network
+- Allow incoming TCP traffic on port 22 (SSH)
+- Allow incoming TCP traffic on port 3389 (RDP-remote desktop protocol [Windows])
+- Allow incoming ICMP traffic (error and control messages for IP) from any source on the network
+
+Two types of rules: 
+- Ingress: __Target__ (Instances with TAG or specific Service account) and __Source__ (CIDR)
+- Egress: __Target__ (Instances with TAG or specific Service account) and __Destination__ (CIDR Block)
+
+### Shared VPC 
+
+When you want to communicate resources in **different projects**, Shared VPC is a solution. There is a host project and service projects.
+
+### VPC Peering 
+
+Useful to connect VPC networks of different organizations, different projects in same organization and same project in same organization.
+The communication happens inside Google network (internal IP address) and is not accesible from internet. 
+
+
+## Hybrid Cloud
+
+### Cloud VPN
+
+Is a service **to connect on-premise network** to the GCP network (hybrid cloud). The traffic is encrypted using Internet Key Exchange protocol, the VPN is implemented using IPSec VPN Tunnel. The two different types of Cloud VPN solutions are:
+- HA VPN (SLA of 99.99% service availability with two external IP addresses) support only dynamic routing
+- Classic VPN (SLA of 99.99% with a single external IP address) Support static and dynamic routing.
+
+### Cloud Interconnect
+
+Is another alternative to connect on-premise network with GCP network (hybrid cloud), it provides a high speed physical connection between on-premise and VPC networks, the data exchange happens through a private network. The main features are: 
+- Highly available and high throughput
+- Connections:
+  - Dedicated Interconnect: 10 or 100 Gbps 
+  - Partner Interconnect: 50 Mbps to 10 Gbps.
+- Recommended only for high bandwidth needs.
+
+### Direct peering
+
+Is another alternative to connect on-premise network with GCP network (hybrid cloud) 
+
+Is not a GCP service, is lower lever connection who establish a direct path from on-premises network to Google services (network peering). 
+It is not typically recommended. 
