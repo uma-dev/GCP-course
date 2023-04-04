@@ -1256,13 +1256,57 @@ The related logs are:
  #### Log Router 
 
  Is a tool that manages the logs from Cloud Logging API and decides what to ingest, what to discard and where to route. It sends logs to two types of logs buckets: 
- - **_Required**: Holds Amin activity, system events and access transparency logs. Is retained for __400 days and cannot delete logs before it or modify retention period__
+ - **_Required**: Holds Admin activity, system events and access transparency logs. Is retained for __400 days and cannot delete logs before it or modify retention period__
  - **_Default**: All other logs. Logs are retained for __30 days, logs can be disabled and retention period can be edited up to 10 years__.
 
- Old logs can be exported to Clod storage bucket, Big Query dataset or Cloud Pub/Sub topic. 
+ Old logs can be exported to:
+ - Clod storage bucket
+ - Big Query dataset 
+ - Cloud Pub/Sub topic
 
  Some export use cases are: 
 
  - Troubleshooting using VM Logs: Install cloud logging agent in all VM
  - Export Logs to BigQuery for querying with SQL queries: Install cloud logging agent in VMs, create a BigQuery dataset and export **sink** in Cloud logging with BQ as destination.
  - Retain logs for external auditors: Create a export **sink** in Cloud logging with a bucket as a destination, provide auditors with Storage Object Viewer role and you can see it with Data Studio.
+
+### Cloud Trace
+
+In microservices architecture tracing is a method of __monitoring__ and observing service requests in applications that are based on microservice architecture. 
+
+You can collect latency data from:
+- Supported Google cloud services
+- Instrumented applications using Cloud Trace API. 
+
+Its supported by: 
+- Compute Engine
+- GKE
+- App Engine (flexible and standard)
+
+Libraries available for: 
+- C#
+- Go 
+- Java
+- NOde.js 
+- PHP
+- Python 
+- Ruby
+
+### Cloud debugger
+
+Used to debug in  production or test environments. It captures **state of a running application**. This tool no need to redeploy or add logging statements. Also it is very lightweight, so it doesn't impact users experience.
+
+### Cloud Profiler
+
+Used to identify performance bottlenecks in production. Some of its main features: 
+- Statistical 
+- Low overhead profiler
+- Allows connect profiling data with application source code. 
+
+It consist of two major components:
+- Profiling agent 
+- Profiler interface
+
+### Error Reporting
+
+Supported to various languages and helps to **identify production problems in real time** via a centralized error management console. In the case of Android and iOS client you can use Firebase Crash Reporting. 
