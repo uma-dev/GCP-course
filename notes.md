@@ -1310,3 +1310,13 @@ It consist of two major components:
 ### Error Reporting
 
 Supported to various languages and helps to **identify production problems in real time** via a centralized error management console. In the case of Android and iOS client you can use Firebase Crash Reporting. 
+
+### Some scenarios
+
+| Scenario | Solution |
+| :------- | :------|
+|Record all operations/requests on all objects in a bucket| Turn on data access audit logging for the bucket |
+|Trace a request across multiple microservices| Cloud trace|
+|Identify prominent exceptions or  errors for a specific microservice| Error reporting|
+|Debug a problem in production step by step| Cloud debugger|
+|Look logs for a specific request | Cloud logging|
