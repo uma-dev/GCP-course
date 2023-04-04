@@ -41,14 +41,14 @@ The general structure of a command is as follows:
 |Google Kubernetes Engine|Orchestrate containerized microservices on Kubernetes. Needs advanced **cluster configuration and monitoring**| CaaS|
 |App Engine|Enables highly scalable applications on "fully managed platform" | PaaS (CaaS Serverless)|
 |Cloud Functions |Build event driven applications using simple, single-purpose functions| FaaS Serverless|
-|Cloud Run |Highly scalable containerized applications.  **Does not need a cluster**| CaaS (Serverless)| 
+|Cloud Run |Highly scalable containerized applications. **Does not need a cluster**| CaaS (Serverless)| 
 
 ----
 
 ## Compute Engine (Virtual Machines)
 
 Google Compute Engine is a SERVICE to manage and create lifecycle of VM.
-- You cannot  change a instance template, you can copy it and modify the copy.
+- You cannot change a instance template, you can copy it and modify the copy.
 - Custom images can be used to create vm-instances with OS patches and/or software preinstalled.
 - You can share an image across projects.
 - **Hardening** an image is the process of creating an image from a vm-instance that meets the security requirements of an enterprise.
@@ -65,10 +65,10 @@ Google Compute Engine is a SERVICE to manage and create lifecycle of VM.
 
 ### Cost 
 
-In GCP you are billed per second.  For money saving, always choose the right machine type for your needs and image for your workload. Whenever you have a predictable resources need, you can commit the use of a VM (Kubernetes or  Compute engine) for 1 or 3 years and get up to 70% of discount.
+In GCP you are billed per second. For money saving, always choose the right machine type for your needs and image for your workload. Whenever you have a predictable resources need, you can commit the use of a VM (Kubernetes or Compute engine) for 1 or 3 years and get up to 70% of discount.
 - **Preemptible VM** only last **24 hours**  or less due to system demands and they are 80% more cheaper but have a lot of disadvantages, e.g. not always available.
 - Also, Preemptible VM doesn't work with free tier credits.
-- The updated version of Preemptible VM is **Spot VM** and the key difference is that they **don't  have a maximum runtime**.
+- The updated version of Preemptible VM is **Spot VM** and the key difference is that they **don't have a maximum runtime**.
 - Spot VM has a Dynamic pricing which represents 60-90% of discount to on-demand VM. 
 - When you apart an static ip address you'll be billed, even if you aren't using it!
 - The storage attached to a compute instance generate a bill. even if the compute instance is stopped. 
@@ -102,7 +102,7 @@ Whenever you need a system update (HW or SW) you can use Live migration. This me
 ### Instances group
 
 Instances groups can be: 
-- **Managed** (MIG) Identical instances autoscaling, auto-healing, etc compatible. Also you can use:  
+- **Managed** (MIG) Identical instances autoscaling, auto-healing, etc compatible. Also you can use: 
   - Rolling updates (step by step updates)
   - Canary deployment (test newer versions on a group of instances)
 
@@ -112,7 +112,7 @@ Instances groups can be:
 
 | Scenario | Solution |
 | :------- | :--------|
-| MIG managed  application that survives ZONAL failures | Create multiple zones MIG. |
+| MIG managed application that survives ZONAL failures | Create multiple zones MIG. |
 | Group of multiple VMs with different configurations | Create an UIG. |
 |Preserve state in a MIG (like databases)| Create stateful MIG. |
 |High availability in MIG when there are hw or sw updates| Create a template with Availability police for automatic restart = on and on-host maintenance = migrate VM instance. |
@@ -144,8 +144,8 @@ Most common protocols such as:
 | Scenario | Solution |
 | :------- | :--------|
 | Only healthy instances can receive traffic| Use health check |
-|High availability for instances| Use a MIG  across different regions and configure a Load balancer.|
-|Route request to multiple microservices with the same Load balancer| Configure the "The host and path rules" to redirect to specific  microservice depending on the path|
+|High availability for instances| Use a MIG across different regions and configure a Load balancer.|
+|Route request to multiple microservices with the same Load balancer| Configure the "The host and path rules" to redirect to specific microservice depending on the path|
 |Load balance Global external HTPPS traffic across backend instances, and multiple regions| Global external HTTP(S) Load balancer|
 |SSL termination for Global non-HTTPS traffic with Load balancing| SSL Proxy Load Balancer |
 
@@ -186,7 +186,7 @@ App engine provides two different environments: **Standard** and **Flexible**.
   - In the V1 (old versions) Python and PHP runtimes have some additional restrictions with network and libraries.
   - In the V2 (new versions) there are not restrictions.
 
-- In **Flexible** environment  applications runs in Docker containers which uses Docker Engine __virtual machines__ and support any runtime. Also provides access to background processes and local disks.
+- In **Flexible** environment applications runs in Docker containers which uses Docker Engine __virtual machines__ and support any runtime. Also provides access to background processes and local disks.
 
 Here it is a simple comparison:
 
@@ -257,7 +257,7 @@ To split it by **random** use:
 
 ### Deploy an application without downtime 
 - Option 1: Deploy and shift at once with ```gcloud app deploy```
-- Option 2: Deploy with no promote  ```gcloud app deploy --no-promote``` and then shift traffic to second version with:
+- Option 2: Deploy with no promote ```gcloud app deploy --no-promote``` and then shift traffic to second version with:
   - All at once ```gcloud app services set-traffic SERVICE --splits V2=1```
   - Gradually with migrate (not supported in flexible) ```--migrate```
   - Manually with ```gcloud app services set-traffic SERVICE --splits=v2=.5,v1=.5```
@@ -392,7 +392,7 @@ Finally you can deploy the new service to the new pool by setting the node selec
 
 nodeSelector: cloud.google.com/gke-nodepool:POOL_NAME
 
-To delete  microservices use: 
+To delete microservices use: 
 ```kubectl delete service```
 ```kubectl delete deployment```
 
@@ -437,7 +437,7 @@ They are the smallest deployable unit in Kubernetes and they can contain one or 
 
 ### Deployments
 
-A deployment represents a service with all of its versions.  It **ensures new releases with zero downtime**
+A deployment represents a service with all of its versions. It **ensures new releases with zero downtime**
 
 ```kubectl set image deployment DEPLOYMENT_NAME ACTUAL_IMAGE=NEW_IMAGE```
 
@@ -487,7 +487,7 @@ Another key features are:
 - Are time bound: timeout min 1 and MAX 60
 - 2 Cloud Functions versions for the **environment**.
 
-Another  features are: 
+Another features are: 
 - Autoscaling
 - One function instance handles ONE request at a time
 - Has the typical (serverless architectures) problem of __cold start__ which can be solved by a min number of instances
@@ -531,7 +531,7 @@ The idea with cloud run is "container to production in seconds". There is no inf
 - No limitations in languages.
 - Integrates Cloud Code, Cloud Build, Cloud Monitoring and Cloud Logging Integrations.
 - Supports YAML configuration.
-- Supports revisions (redeploying a service)  and traffic splitting.
+- Supports revisions (redeploying a service) and traffic splitting.
 
 There is another alternative which is **Anthos** to run clusters anywhere cloud or __multicloud__. 
 
@@ -559,7 +559,7 @@ Adjust traffic assignments with:
 
 Data it is not stored in raw format so data in databases, hard disk, file servers, etc needs to be encrypted. 
 
-###  Types of encryption 
+### Types of encryption 
 
 - Symmetric: same key for encryption and decryption
 - Asymmetric: a public (encrypt) and a private (decrypt) key, 
@@ -591,7 +591,7 @@ It allows snapshots (__incremental__ because they save changes between them) and
   - Regional: data replicated in multiple zones (high durability) but the cost can be the double of zonal.
 
 - **Local SSD** (on the same host as the virtual machine) 
-Provides high IOPS and low latency but data only persist until instance is running. Data is encrypted  but only some machine types support this feature and it is physically attached to a VM instance.
+Provides high IOPS and low latency but data only persist until instance is running. Data is encrypted but only some machine types support this feature and it is physically attached to a VM instance.
 
 ### Comparison PD vs Local SSD
 
@@ -683,12 +683,12 @@ Most popular, serverless and inexpensive multipurpose storage service. It provid
 
 - Autoscaling and infinite scale
 - Treat entire object as a unit
-- Also called  **Object Storage**
+- Also called **Object Storage**
 - Provides REST API to access and modify objects
 - Provides CLI and Client Libraries for various languages
 - Store all file types (text, binary, backup and archives)
 - Backups of databases
--Staging data during  on-premise to cloud database migration
+-Staging data during on-premise to cloud database migration
 
 ### Buckets
 
@@ -698,7 +698,7 @@ It can be multi-region, dual-region or single region. Some other features are:
 - Each bucket is associated with a project
 - Each object has an unique ID
 - Max object size in 5 TB
-- There is no limit for the number of  objects
+- There is no limit for the number of objects
 - To __create a static website__ using buckets follow:
   - Create a bucket with the same name as a website name (you have to own the domain)
   - Copy files to the bucket (including index and error files)
@@ -835,7 +835,7 @@ Some concepts:
 
 ### Service Account
 
-Is an identified email address. It is both an Identity and a Resource. They are very useful when you don't want to use personal credentials to allow access.  They can be either: 
+Is an identified email address. It is both an Identity and a Resource. They are very useful when you don't want to use personal credentials to allow access. They can be either: 
 - Default service accounts (Automatically created when some services are used) NOT RECOMMENDED
 - User managed (fine grained access control and conditions) RECOMMENDED
 - Google-managed service accounts (Created and managed by Google) They are used by GCP to perform operations on user's behalf, we don't generally worry about them.
@@ -844,7 +844,7 @@ Beware that the process of providing access is different if the application is o
 
 ### Access Control List (ACL)
 
-Defines who can access to a bucket and objects and the level of the access. It is different from IAM  because ACL is more granular and instead of granting access to all objects in a bucket, it can customize the specific access to different objects.  It can be: 
+Defines who can access to a bucket and objects and the level of the access. It is different from IAM because ACL is more granular and instead of granting access to all objects in a bucket, it can customize the specific access to different objects. It can be: 
 - Uniform (using IAM) RECOMMENDED
 - Fine grained (using IAM + ACL)
 
@@ -852,13 +852,13 @@ Defines who can access to a bucket and objects and the level of the access. It i
 
 Useful to allow a user **limited time** access, users don't require Google accounts. The steps to create a signed URL are: 
 - Create a key for the service account/ user with the desired permissions. 
-- Create  a signed URL with the key and gsutil ```gsutil signurl -d 10m YOUR_KEY gs://BUCKET_NAME/OBJECT_PATH```
+- Create a signed URL with the key and gsutil ```gsutil signurl -d 10m YOUR_KEY gs://BUCKET_NAME/OBJECT_PATH```
 
 ## Databases 
 
 ### Technical measures 
 
-**Availability** [downtime of an app]: commonly 9 nines  (typically online apps aim  this availability). 
+**Availability** [downtime of an app]: commonly 9 nines (typically online apps aim this availability). 
 - A common way to improve availability in databases is by using standby databases (synchronous replication) in multiple zones or multiple regions. 
  
 **Durability** [percentage of data losed]: commonly 11 nines, it is really high because once data is lost, there is no way to get it back. It is commonly more important that availability. 
@@ -880,9 +880,9 @@ Some ****scenarios**** related to data loss and downtime are:
 
 | Scenario | Solution |
 | :------- | :------|
-|Very small data loss ( RPO -1 min) and Very small downtime (RTO -5 minutes)|  Hot standby| 
+|Very small data loss ( RPO -1 min) and Very small downtime (RTO -5 minutes)| Hot standby| 
 |Very small data loss ( RPO -1 min) and admissible to downtime (RTO -15 minutes) | Warm standby|
-| Data is critical ( RPO -1 min) and downtime admissible in range of hours (RTO - few hours)| Snapshots  and transaction logs|
+| Data is critical ( RPO -1 min) and downtime admissible in range of hours (RTO - few hours)| Snapshots and transaction logs|
 |Data can be lost| Failover a new server| 
 
 Increase database performance
@@ -891,7 +891,7 @@ Increase database performance
 | :------- | :------|
 |Database performance is impacted by two applications reading data from one database| Vertically scale the database (increase CPU and memory)|
 |Database performance is impacted by two applications reading data from one database|Create a database cluster (Distribute the database) -> expensive setup|
-|Database performance is impacted by two applications reading data from one database|Create  read replicas (run read only applications against read replicas)|
+|Database performance is impacted by two applications reading data from one database|Create read replicas (run read only applications against read replicas)|
 
 ### Choosing a database 
 Some of the factors to choose a database are: 
@@ -904,7 +904,7 @@ Some of the factors to choose a database are:
 
 ### Databases categories
 
-- **Relational** (most popular) It has tables and relations between them. Used for:  
+- **Relational** (most popular) It has tables and relations between them. Used for: 
   - __OLTP__ (row storage): applications where large number of users make large number of small transactions. MySQL, Oracle, SQL server, etc. In __Google Managed services__ Cloud SQL supports PostgreSQL, MySQL and SQL server for regional relational databases. Cloud Spanner is intended for global applications with horizontal scaling.
     - Cloud SQL
     - Cloud Spanner
@@ -928,7 +928,7 @@ Some of the factors to choose a database are:
 |A startup with quick evolving schema (table structure)| NoSQL-Firestore/Datastore |
 |Non relational db with less storage(10 GB)| NoSQL-Firestore/Datastore|
 |Transactional global database with predefined schema needing to process million of transactions per second| Global/Relational/OLTP-CloudSpammer|
-|Transactional  local database processing thousands of transactions per second|Local/OLTP-CloudSQL|
+|Transactional local database processing thousands of transactions per second|Local/OLTP-CloudSQL|
 |Cache data (from database) for a web application| Cache-Memory Store|
 |Database for analytics processing of petabytes of data| Analytics/OLAP-BigQuery|
 |Database for storing huge volumes stream data from IOT devices | Stream/NoSQL-Cloud Big Table|
@@ -971,7 +971,7 @@ It is a high cost (pay per nodes and storage) alternative to Cloud SQL that allo
 - Working with huge volumes of relational data 
 - Infinite scaling for a growing application 
 - Global database
-- Data export through Cloud Console and Data  flow (no gcloud option)
+- Data export through Cloud Console and Data flow (no gcloud option)
 - You first need to create an instance in order to use the service
 
 ### Cloud Datastore and Firestore
@@ -1025,7 +1025,7 @@ In the context of tons of data, import and export becomes very important, so you
 - Batch loading with BigQuery Data Transfer Service
 - Dataflow (streaming pipeline)
 
-Exabyte scale modern Datawarehousing solution from GCP.  It provides Relational database (SQL, schema, consistency).  Data in organized in **datasets**, inside datasets there are multiple tables. It offers: 
+Exabyte scale modern Datawarehousing solution from GCP. It provides Relational database (SQL, schema, consistency). Data in organized in **datasets**, inside datasets there are multiple tables. It offers: 
 - Two approaches: __traditional__ (storage + compute) and __modern__ (realtime + serverless) 
 - Importing (lost of sources: CSV, JSON, ARO, PAKE, ORC, 
 Datastore backups, etc) and exporting (Cloud Storage and Data Studio, formats: CSV/JSON with Gzip compression, Avro with deflate or snappy compression)
@@ -1075,14 +1075,14 @@ Whenever you import or export databases, and you are using Cloud Storage Buckets
 ## Asynchronous Communication
 
 It is a form of communication that implies putting a Topic between web server (publisher) and Logging service (subscriber). It is necessary because provides the following improvements over the traditional Logging service model such as: 
-- Availability ->  Even if Logging service is down, the publisher remains up
+- Availability -> Even if Logging service is down, the publisher remains up
 - Scalability -> You can process more logs scaling the topic
 - Decoupling -> Apps (publishers) doesn't care who listen their logs.
 - Durability -> messages are not lost even if the Logging service (subscriber) is down 
 
 ### Pub/Sub
 
-The __GCP managed service__ for  asynchronous messaging service, is **Pub/Sub**, the main features are:
+The __GCP managed service__ for asynchronous messaging service, is **Pub/Sub**, the main features are:
 - Auto scale
 - Pay for use (low cost)
 
@@ -1143,7 +1143,7 @@ Until now, the VPC used in the above sections was the default, but you can creat
 
 ### CIDR (Classless )
 
-The continuous resources in a network makes routing easy. CIDR blocks express a range of addresses, consist of a starting IP address and a range which indicates the number of fixed bits in that address. Each address consist in (IPv4) 4 groups of 8 bits (32 bits), so 69.208.0.0/28 means that only 32 - 28 = 4 bits are free which means 2^4=16  possible combinations or addresses and 69.208.0.0 means the initial IP address, so the range expressed is from 69.208.0.0 to 69.208.0.15  
+The continuous resources in a network makes routing easy. CIDR blocks express a range of addresses, consist of a starting IP address and a range which indicates the number of fixed bits in that address. Each address consist in (IPv4) 4 groups of 8 bits (32 bits), so 69.208.0.0/28 means that only 32 - 28 = 4 bits are free which means 2^4=16 possible combinations or addresses and 69.208.0.0 means the initial IP address, so the range expressed is from 69.208.0.0 to 69.208.0.15 
 Remember: 
 - 0.0.0.0/0 Represents all the range of IPv4 addresses
 - 0.0.0.0/32 Represents one address. 
@@ -1221,11 +1221,11 @@ Tools that provide:
 
 ### Cloud Logging
 
- Log management and analysis tool. Allows to store search and  analyze ans alert on massive volume of data. Some of the key features are: 
+ Log management and analysis tool. Allows to store search and analyze ans alert on massive volume of data. Some of the key features are: 
  - Logs Explorer 
- - Logs Dashboard  
+ - Logs Dashboard 
  - Logs Metrics 
- - Logs  Router
+ - Logs Router
 
 Is worth mentioning that most of GCP managed services automatically send logs to Cloud Logging. 
 
@@ -1256,7 +1256,13 @@ The related logs are:
  #### Log Router 
 
  Is a tool that manages the logs from Cloud Logging API and decides what to ingest, what to discard and where to route. It sends logs to two types of logs buckets: 
- - **_Required**: Holds Amin activity, system events and access transparency logs. Is retained for  __400 days and cannot delete logs before it or modify retention period__
+ - **_Required**: Holds Amin activity, system events and access transparency logs. Is retained for __400 days and cannot delete logs before it or modify retention period__
  - **_Default**: All other logs. Logs are retained for __30 days, logs can be disabled and retention period can be edited up to 10 years__.
 
  Old logs can be exported to Clod storage bucket, Big Query dataset or Cloud Pub/Sub topic. 
+
+ Some export use cases are: 
+
+ - Troubleshooting using VM Logs: Install cloud logging agent in all VM
+ - Export Logs to BigQuery for querying with SQL queries: Install cloud logging agent in VMs, create a BigQuery dataset and export **sink** in Cloud logging with BQ as destination.
+ - Retain logs for external auditors: Create a export **sink** in Cloud logging with a bucket as a destination, provide auditors with Storage Object Viewer role and you can see it with Data Studio.
