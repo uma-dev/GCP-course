@@ -1171,7 +1171,7 @@ When you want to communicate resources in **different projects**, Shared VPC is 
 ### VPC Peering 
 
 Useful to connect VPC networks of different organizations, different projects in same organization and same project in same organization.
-The communication happens inside Google network (internal IP address) and is not accesible from internet. 
+The communication happens inside Google network (internal IP address) and is not accessible from internet. 
 
 
 ## Hybrid Cloud
@@ -1232,3 +1232,24 @@ Is worth mentioning that most of GCP managed services automatically send logs to
 In order to get logs from Google Compute Engine VMs, you have to install **Logging agent** (based on fluentd).
 
 If you want logs from on-premises, you can use BindPlane tool from Blue Medora or the cloud Logging API.
+
+#### Audit and Security Logs
+
+The related logs are: 
+- **Access Transparency Logs** (needs gold support or above): Captures Actions performed by GCP team on your cloud resources. 
+- **Clod Audit Logs**: Represents who did a change when and where. (which service, which operation, what resource and who is making the call). <br>
+ The different Audit logs (default enabled?):
+
+  - __Admin activity logs__ (yes) 
+    - -> API calls or other actions that modify configuration of resources. 
+    - -> VM Creation, Patching resources, Change IAM permissions, etc. 
+  - __Data access logs__ (no) 
+    - -> Reading configuration of resources. 
+    - -> Listing resources. 
+  - __System Event Audit Logs__ (yes) 
+    - -> Google Cloud administrative actions. 
+    - -> On host maintenance, Instance preemption, Automatic restart. 
+  - __Policy Denied Audit Logs__ (yes) 
+    - -> When user or service account access is denied.
+    - -> Security policy violation logs. 
+ 
