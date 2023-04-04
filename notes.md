@@ -1253,3 +1253,10 @@ The related logs are:
     - -> When user or service account access is denied.
     - -> Security policy violation logs. 
  
+ #### Log Router 
+
+ Is a tool that manages the logs from Cloud Logging API and decides what to ingest, what to discard and where to route. It sends logs to two types of logs buckets: 
+ - **_Required**: Holds Amin activity, system events and access transparency logs. Is retained for  __400 days and cannot delete logs before it or modify retention period__
+ - **_Default**: All other logs. Logs are retained for __30 days, logs can be disabled and retention period can be edited up to 10 years__.
+
+ Old logs can be exported to Clod storage bucket, Big Query dataset or Cloud Pub/Sub topic. 
