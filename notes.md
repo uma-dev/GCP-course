@@ -805,10 +805,12 @@ An Identity can be:
 
 Some concepts:
 - Member: The one who needs the permissions, is also called principal or identity. It can be a:
-  - User
-  - Service Account
-  - Group
+  - User (represents a person with an email address)
+  - Service Account (represents an application account)
+  - Group (has a unique email address)
   - Domain
+    - Google workspace domain
+    - Cloud identity domain 
 - Roles: set of permissions to perform a specific actions on specific resources. __The roles don't know about members like they do in AWS__. Some types of roles are: 
   - **Basic** roles (viewer, editor[viewer + edit actions], owner [editor + manage roles and permissions + billing]) **not recommended for production** (See principle of least privilege)
   - **Predefined** roles (storage admin, storage object admin, storage object viewer, storage object creator)
@@ -1353,8 +1355,74 @@ Also, you can **export billing data** to:
 
 ## IAM 
 
+Focuses on who and gives their accesses. 
 Some principles/recommendations: 
 - Give the least possible privilege needed for a role (**Least privilege**)
 - At least 2 people in sensitive tasks. (**Separation of duties**)
 - Review Cloud Audit Logs to audit changes to IAM policies and access to Service accounts Keys (**Constant Monitoring**)
 - Simplify roles management (**Use groups**)
+
+### User Identity Management
+
+For enterprises is not recommended to add user  with individual Gmail accounts. There are two solutions that can work:
+- Use Google workspace
+- Use and bind Google Cloud with the identity provider of the enterprise.
+
+### Corporate Directory  Federation
+
+Federate Cloud Identity or Google workspace with your external identity provider (IdP)  such as Active Directory or Azure Active Directory.
+
+** __Federation__ is a process where one system is responsible for the authentication of a user. That system then sends a message to a second system, announcing who the user is, and verifying that they were properly authenticated. 
+
+### Organization Policy
+
+Focuses on what can be done on specific resources. 
+Centralized constrains on all resources created in an Organization, it needs a role of **Organization Policy Administrator**. For example:
+- Disable creation of Service Accounts
+- Allow/Deny creation of resources in specific regions. 
+
+### IAM policy 
+
+Can be set at any level of the hierarchy. The resources inherit the policies of All parents. The policy in one specific level is the union of the policy of that resource and its parents. 
+ 
+### Roles 
+
+#### Organization, Billing and Project
+
+- Organization
+  - Organization Administrator
+- Billing 
+  - Billing account creator (finance team)
+  - Billing account administrator (finance team)
+  - Billing account user (project owner)
+  - Billing account viewer (auditor)
+- Project
+  - Project Creator 
+
+#### Compute Engine
+
+  - Compute Engine Admin (Everything in compute)
+  - Compute Instance Admin (Everything in instances)
+  - Compute Engine Network Admin
+  - Compute Engine Security Admin (firewall rules and SSL certificates)
+  - Compute Storage Admin
+  - Compute Engine Viewer (read only in everything in Compute Engine)
+  - Compute OS Admin Login 
+  - Compute OS Login 
+
+#### App Engine
+CRUD (Create, Read, Update, Delete)
+- App Engine Creator (CD)
+- App Engine Admin (application -> RU, services/instances/versions -> CRUD )
+- App Engine Viewer (apps/services/instances/versions -> read)
+- App Engine Code Viewer (unique role that can view code)
+- App Engine Deployer (versions -> CRD, app/s/v -> R)
+- App Engine Service Admin ( versions -> RUD, a -> R, s/i -> CRUD)
+
+Remember that none App Engine Role allow to:
+- View and download applications logs
+- View monitoring charts in the cloud console
+- Enable/disable billing
+- Access configuration or data stored in other services
+
+
