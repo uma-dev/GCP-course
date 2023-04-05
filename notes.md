@@ -810,7 +810,7 @@ Some concepts:
   - Group
   - Domain
 - Roles: set of permissions to perform a specific actions on specific resources. __The roles don't know about members like they do in AWS__. Some types of roles are: 
-  - **Basic** roles (viewer, editor[viewer + edit actions], owner [editor + manage roles and permissions + billing]) **not recommended for production**
+  - **Basic** roles (viewer, editor[viewer + edit actions], owner [editor + manage roles and permissions + billing]) **not recommended for production** (See principle of least privilege)
   - **Predefined** roles (storage admin, storage object admin, storage object viewer, storage object creator)
   - **Custom** roles: are used when predefined roles are not sufficient
 - Policy: Allows to bind a or more roles to members
@@ -835,9 +835,9 @@ Some concepts:
 
 ### Service Account
 
-Is an identified email address. It is both an Identity and a Resource. They are very useful when you don't want to use personal credentials to allow access. They can be either: 
+Is an identified email address. It is both an Identity and a Resource. Its also recommended to have one service account per project. They are very useful when you don't want to use personal credentials to allow access. They can be either: 
 - Default service accounts (Automatically created when some services are used) NOT RECOMMENDED
-- User managed (fine grained access control and conditions) RECOMMENDED
+- User managed (fine grained access control and conditions) **RECOMMENDED**
 - Google-managed service accounts (Created and managed by Google) They are used by GCP to perform operations on user's behalf, we don't generally worry about them.
 
 Beware that the process of providing access is different if the application is on premise or if is hosted in GCP.
@@ -1350,3 +1350,11 @@ You can set a **budget** to avoid surprises and configure alerts with notificati
 Also, you can **export billing data** to: 
 - Big Query (to query information)
 - Cloud storage (history)
+
+## IAM 
+
+Some principles/recommendations: 
+- Give the least possible privilege needed for a role (**Least privilege**)
+- At least 2 people in sensitive tasks. (**Separation of duties**)
+- Review Cloud Audit Logs to audit changes to IAM policies and access to Service accounts Keys (**Constant Monitoring**)
+- Simplify roles management (**Use groups**)
