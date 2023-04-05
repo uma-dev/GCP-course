@@ -1202,7 +1202,7 @@ It is not typically recommended.
 
 ### Cloud monitoring
 
-Works for GCP projects and AWS projects, in order to group all the information from multiple GCP projects you need to create a workspace on the host project and then add other GCP or AWS projects to the workspace.
+Its a set of tools that works for GCP projects and AWS projects, in order to group all the information from multiple GCP projects you need to create a workspace on the host project and then add other GCP or AWS projects to the workspace.
 
 What you should know: 
 - Are users having any issue?
@@ -1320,3 +1320,33 @@ Supported to various languages and helps to **identify production problems in re
 |Identify prominent exceptions or  errors for a specific microservice| Error reporting|
 |Debug a problem in production step by step| Cloud debugger|
 |Look logs for a specific request | Cloud logging|
+
+## Organizing GCP resources
+
+### Hierarchy
+
+The general  hierarchy is: 
+Organization > Folder** > Project > Resources
+
+** Folder is not available in trial accounts. 
+
+Some recommendations for enterprises:
+- Create different folders for each department. (Isolation between apps of different departments)
+- Create separate projects for different environments. (Isolation between DEV and PROD)
+- One project per application per environment 
+
+### Billing account
+
+Projects with active resources should be associated with a Billing Account. 
+__One Billing Account can be associated with one or more projects__. A startup can have only one billing account, but an enterprise can have multiple billing accounts per department. 
+There are two types of Billing accounts: 
+- Self serve (automatic payment with credit card or bank account)
+- Invoiced (Generates invoices for larger enterprises)
+
+You can set a **budget** to avoid surprises and configure alerts with notifications to:
+- Pub/Sub
+- Email  
+
+Also, you can **export billing data** to: 
+- Big Query (to query information)
+- Cloud storage (history)
