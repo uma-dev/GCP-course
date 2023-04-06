@@ -256,6 +256,7 @@ To split it by **random** use:
 ```gcloud app services set-traffic --splits=v3=.5,v2=.5 --split-by=random```
 
 ### Deploy an application without downtime 
+
 - Option 1: Deploy and shift at once with ```gcloud app deploy```
 - Option 2: Deploy with no promote ```gcloud app deploy --no-promote``` and then shift traffic to second version with:
   - All at once ```gcloud app services set-traffic SERVICE --splits V2=1```
@@ -274,9 +275,11 @@ To split it by **random** use:
 - Configured using cron.yaml and the command 
 
 #### Override routing rules
+
 - dispatch.yaml
 
 #### Manage task queues
+
 - queue.yaml
 
 ### Scenarios 
@@ -794,7 +797,7 @@ __Tip and trick__. To change storage class of and existing bucket you have to:
 
 ## Google IAM 
 
-Provides the service for **authentication** (is the right user) and **authorization** (is the right access) for the identities to access the resources. 
+Provides the service for **authentication** (is the right user?) and **authorization** (is the right access?) for the identities to access the resources. 
 
 An Identity can be: 
 - A GCP user 
@@ -1411,6 +1414,7 @@ Can be set at any level of the hierarchy. The resources inherit the policies of 
   - Compute OS Login 
 
 #### App Engine
+
 CRUD (Create, Read, Update, Delete)
 - App Engine Creator (CD)
 - App Engine Admin (application -> RU, services/instances/versions -> CRUD )
@@ -1425,4 +1429,50 @@ Remember that none App Engine Role allow to:
 - Enable/disable billing
 - Access configuration or data stored in other services
 
+#### Kubernetes Engine
 
+- Kubernetes Engine Admin: Access to Clusters and Kubernetes API objects
+- Kubernetes Engine Cluster Admin
+- Kubernetes Engine Developer
+- Kubernetes Engine Viewer read (get/list) clusters and kubernetes API objects
+
+#### Cloud Storage 
+
+- Storage Admin (buckets and objects)
+- Storage Object Admin (objects only)
+- Storage Object Creator
+- Storage Object Viewer
+
+#### Big Query 
+
+- BigQuery Admin
+- BigQuery Data Owner (doesn't have access to Jobs)
+- BigQuery Data Editor (edit data, also doesn't has access to jobs)
+- BigQuery Data Viewer (view data, also doesn't has access to jobs)
+- BigQuery Job User (Create jobs, run queries)
+- BigQuery User (Data Viewer + read Jobs )
+
+#### Logging
+- Logs viewer (read all logs except access transparency and data access audit logs)
+- Private Logs Viewer (logs viewer + transparency and data access audit logs)
+- Logging Admin (all permissions related to logging)
+
+#### Service accounts
+
+- serviceAccountAdmin (Create and manage service accounts)
+- serviceAccountUser (Run operations)
+- serviceAccountTokenCreator (Impersonate service accounts)
+- serviceAccountKeyAdmin (Create and manage and rotate service account keys)
+
+#### IAM Roles 
+
+- Security 
+  - securityAdmin
+  - securityReviewer
+- Organization
+  - organizationRoleAdmin
+  - organizationRoleViewer
+- Project
+  - roleAdmin
+  - roleViewer
+  - browser (cannot see resources in the project)
