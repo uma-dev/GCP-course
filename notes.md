@@ -1476,3 +1476,33 @@ Remember that none App Engine Role allow to:
   - roleAdmin
   - roleViewer
   - browser (cannot see resources in the project)
+
+  ### Authentication in Compute Engine VM
+
+  - Linux (SSH)
+    - Metadata managed -> manually create
+    - OS login -> Link Linux user account to Google identity. Has advantages importing Linux accounts 
+  - Windows 
+    - passwords
+
+  There are different ways to login via SSH: 
+  - Console SSH Button: temporary keys
+  - Gcloud command ```gcloud compute ssh``` (persistent keys, reused in the future)
+  - Customized keys 
+    - Meta managed (centralized, all keys in one place)
+    - OS login (each one maintain its key, so easy)
+
+### Some scenarios
+
+| Scenario | Solution |
+| :------- | :------|
+|Permanent access to sub set of objects in a bucket| ACL|
+|Permanent access to a bucket| IAM|
+|Limited access to specific object in a bucket| signed URL|
+|Access to a set of resources in a team | Create a group and add users|
+|Role to upload objects to cloud storage|Storage Object creator|
+|Role to manage kubernetes API objects|Kubernetes Engine Developer|
+|Role to manage service accounts| Service 
+Account Admin|
+|Role to view data in BigQuery| BigQuery Data Viewer|
+  
