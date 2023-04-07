@@ -1529,4 +1529,29 @@ The steps to deploy infrastructure with Cloud deployment manager are:
 
 ## Cloud Marketplace
 
-Its a useful tool to install software/stack that involves multiple resources of GCP, it is similar to the App Store/Play Store for mobile applications. 
+Its a useful tool to install software/stack that involves multiple resources of GCP, it is similar to the App Store/Play Store for mobile applications. Some examples are: 
+- WordPress 
+- Elasticsearch
+- Jenkins
+- Apache Kafka
+- LAMP
+
+## Cloud DNS
+
+It is a Global Domain Name System, it helps you setting up a DNS routing for your website (setting up a website with a domain name). So you can manage the mapping from a name to an IP address. The process to follow is: 
+
+- Create a zone (public or private)
+- Create a  record set
+
+Equivalent commands are: 
+
+- Create a zone ```gcloud dns manages-zones create ZONE_NAME``` with the following options: 
+  - ```--description``` REQUIRED
+  - ```--dns-name``` REQUIRED
+  - ```--visibility``` (public/private)
+  - ```--networks```
+
+- Create a  record set (3 steps involved)
+  - Start transaction zone ```gcloud dns record-sets transaction start --zone```
+  - Make changes ```gcloud dns record-sets transaction add --name=RECORD_NAME --ttl --type --A/CNAME --zone```
+  - End transaction of zone
