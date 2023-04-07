@@ -1555,3 +1555,19 @@ Equivalent commands are:
   - Start transaction zone ```gcloud dns record-sets transaction start --zone```
   - Make changes ```gcloud dns record-sets transaction add --name=RECORD_NAME --ttl --type --A/CNAME --zone```
   - End transaction of zone
+
+## Cloud Dataflow 
+
+It a serverless and autoscaling tool, based on Apache Beam  used for Streaming and batch use cases like:
+- Streaming
+  - Pub/sub > Dataflow > BigQuery 
+  - Pub/sub > Dataflow > Cloud Storage
+- Batch
+  - Cloud Storage > Dataflow > Big Table/Cloud Spanner/Datastore/BigQuery 
+  - Convert file formats between Avro, Parquet and CSV
+
+Offers pre-built templates and support for Java, Python, Go, etc. 
+
+## Cloud Dataproc 
+
+Is a data analysis platform, so you can export cluster configuration but not data. An alternative could be BigQuery (run SQL queries), but Cloud Dataproc is needed when you need complex batch processing for ML or AI workloads. It is useful to move Hadoop and Spark clusters to the cloud.
