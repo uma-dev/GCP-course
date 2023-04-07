@@ -1570,4 +1570,9 @@ Offers pre-built templates and support for Java, Python, Go, etc.
 
 ## Cloud Dataproc 
 
-Is a data analysis platform, so you can export cluster configuration but not data. An alternative could be BigQuery (run SQL queries), but Cloud Dataproc is needed when you need complex batch processing for ML or AI workloads. It is useful to move Hadoop and Spark clusters to the cloud.
+Is a data analysis platform, so you can export cluster configuration but not data. An alternative could be BigQuery (run SQL queries), but Cloud Dataproc is needed when you need complex batch processing for ML or AI workloads. It is useful to **move Hadoop and Spark clusters** to the cloud.
+
+Supports the following cluster modes: 
+- Single node
+- Standard
+- High availability
