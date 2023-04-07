@@ -1506,3 +1506,27 @@ Remember that none App Engine Role allow to:
 Account Admin|
 |Role to view data in BigQuery| BigQuery Data Viewer|
   
+## Pricing Calculator
+
+Used to estimate the cost of a GCP solution. Works in more than 40 services including Compute Engine, Kubernetes Engine, Cloud Run, App Engine, Cloud Storage, etc.
+
+## Cloud deployment manager
+
+Tool created to automate the process of infrastructure deployment and modification of resources in a controlled and predictable way with a script (YAML file). The advantages of using it are: 
+- Avoid configuration drift: Updating one environment without updating the others. 
+- Avoid manual mistakes.
+- Free
+- Allows creating templates with Python or JinJa2
+- Automatic rollback on errors
+- Track changes with a single script.
+
+The steps to deploy infrastructure with Cloud deployment manager are:
+- Create VM
+- Create subnets
+- Create database
+
+** The changes in resources have to be done using  environment manager. 
+
+## Cloud Marketplace
+
+Its a useful tool to install software/stack that involves multiple resources of GCP, it is similar to the App Store/Play Store for mobile applications. 
