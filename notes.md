@@ -680,6 +680,7 @@ To take snapshot
 | :------- |  :-------| :------|
 | Images, Snapshots and Instance templates (not applicable for zonal resources) | Persistent disk, Regional managed instance groups| Persistent disk, Instances and Zonal managed instance groups|
 
+------- 
 ## Cloud storage
 
 Most popular, serverless and inexpensive multipurpose storage service. It provides very useful features like:
