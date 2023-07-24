@@ -1031,7 +1031,7 @@ In the context of tons of data, import and export becomes very important, so you
 - Batch loading with BigQuery Data Transfer Service
 - Dataflow (streaming pipeline)
 
-Exabyte scale modern Datawarehousing solution from GCP. It provides Relational database (SQL, schema, consistency). Data in organized in **datasets**, inside datasets there are multiple tables. It offers: 
+Exabyte scale modern Datawarehousing solution from GCP. It provides Relational database (SQL-case sensitive, schema, consistency). Data in organized in **datasets**, inside datasets there are multiple tables. It offers: 
 - Two approaches: __traditional__ (storage + compute) and __modern__ (realtime + serverless) 
 - Importing (lost of sources: CSV, JSON, ARO, PAKE, ORC, 
 Datastore backups, etc) and exporting (Cloud Storage and Data Studio, formats: CSV/JSON with Gzip compression, Avro with deflate or snappy compression)
