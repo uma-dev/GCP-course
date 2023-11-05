@@ -933,7 +933,7 @@ Some of the factors to choose a database are:
 | :------- | :------|
 |A startup with quick evolving schema (table structure)| NoSQL-Firestore/Datastore |
 |Non relational db with less storage(10 GB)| NoSQL-Firestore/Datastore|
-|Transactional global database with predefined schema needing to process million of transactions per second| Global/Relational/OLTP-CloudSpammer|
+|Transactional global database with predefined schema needing to process million of transactions per second| Global/Relational/OLTP-CloudSpanner|
 |Transactional local database processing thousands of transactions per second|Local/OLTP-CloudSQL|
 |Cache data (from database) for a web application| Cache-Memory Store|
 |Database for analytics processing of petabytes of data| Analytics/OLAP-BigQuery|
@@ -942,7 +942,7 @@ Some of the factors to choose a database are:
 
 ### Cloud SQL 
 
-You can import/export data from:j
+You can import/export data from:
 - Console/gcloud/REST API
 - Large databases use serverless mode
 
