@@ -1267,7 +1267,7 @@ The related logs are:
 
  Old logs can be exported to:
  - Clod storage bucket
- - Big Query dataset 
+ - BigQuery dataset 
  - Cloud Pub/Sub topic
 
  Some export use cases are: 
@@ -1354,7 +1354,7 @@ You can set a **budget** to avoid surprises and configure alerts with notificati
 - Email  
 
 Also, you can **export billing data** to: 
-- Big Query (to query information)
+- BigQuery (to query information)
 - Cloud storage (history)
 
 ## IAM 
@@ -1444,7 +1444,7 @@ Remember that none App Engine Role allow to:
 - Storage Object Creator
 - Storage Object Viewer
 
-#### Big Query 
+#### BigQuery 
 
 - BigQuery Admin
 - BigQuery Data Owner (doesn't have access to Jobs)
